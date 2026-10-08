@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shemford Futuristic School, Muzaffarpur — a CBSE affiliated school on Dumri, Patna Bypass Road. Explore academics, facilities, notices and campus life." />
+  <meta name="theme-color" content="#F97316" />
+  <title>Shemford Futuristic School, Muzaffarpur</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER / NAVIGATION
+       - Sticky, shrinks on scroll (JS toggles .is-scrolled)
+       - Mobile drawer toggled by #navToggle
+       - "Student Login" href="/login" will later become a real route
+  ============================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html" aria-label="Shemford Futuristic School — Home">
+        <img
+          class="brand-logo"
+          src="assets/images/logo.png"
+          alt="Shemford Futuristic School logo"
+          width="44" height="44"
+        />
+        <span class="brand-text">
+          <span class="brand-name">Shemford Futuristic School</span>
+          <span class="brand-place">Muzaffarpur</span>
+        </span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link is-active" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="facilities.html">Facilities</a></li>
+          <li><a class="nav-link" href="notices.html">Notices</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary nav-login" href="login.html">Login</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================================================
+         HERO — full-bleed school photograph with dark gradient
+         Image: assets/images/school-hero.jpg
+    ============================================================= -->
+    <section class="hero hero-photo" aria-labelledby="heroTitle">
+
+      <div class="hero-bg" aria-hidden="true">
+        <img
+          class="hero-bg-img"
+          src="assets/images/hero 1.jfif"
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="hero-bg-overlay"></span>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow eyebrow-light">CBSE Affiliated &middot; Muzaffarpur</p>
+
+          <h1 class="hero-title hero-title-light" id="heroTitle">
+            Shaping <span class="accent-light">Future-Ready</span> Learners
+          </h1>
+
+          <p class="hero-lead hero-lead-light">
+            Shemford Futuristic School is a CBSE affiliated school located on Dumri,
+            Patna Bypass Road, Muzaffarpur. We are committed to strong academics,
+            character building and holistic development in a future-focused
+            learning environment.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#about">Explore Our School</a>
+            <a class="btn btn-light" href="login.html">Login</a>
+          </div>
+
+          <ul class="trust-row trust-row-light" aria-label="Key school information">
+            <li>
+              <svg class="trust-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>CBSE Affiliated</span>
+            </li>
+            <li>
+              <svg class="trust-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+              <span>Muzaffarpur, Bihar</span>
+            </li>
+            <li>
+              <svg class="trust-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 20V6a2 2 0 012-2h8l6 6v10a2 2 0 01-2 2H6a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <span>Dumri &middot; Patna Bypass Road</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+         ABOUT
+         Split editorial layout: image column + text column
+    ============================================================= -->
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="container about-inner">
+
+        <div class="about-media" data-reveal>
+          <img
+            src="assets/images/hero 2.jfif"
+            alt="Students at Shemford Futuristic School"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">About Our School</p>
+          <h2 id="aboutTitle" class="section-title">
+            A future-focused CBSE school in the heart of Muzaffarpur
+          </h2>
+
+          <p class="lead">
+            Shemford Futuristic School is a CBSE affiliated institution located at
+            Dumri, Patna Bypass Road, Dumri – Gobarsahi Rd, Muzaffarpur, Bihar 843113.
+          </p>
+
+          <p>
+            The school brings together a structured academic curriculum with a
+            strong emphasis on holistic development. Our approach combines classroom
+            learning with co-curricular engagement so that students grow academically,
+            socially and personally.
+          </p>
+
+          <ul class="about-points">
+            <li>CBSE affiliated curriculum</li>
+            <li>Located on Dumri, Patna Bypass Road, Muzaffarpur</li>
+            <li>Academic and co-curricular focus</li>
+            <li>Holistic student development</li>
+          </ul>
+
+          <a class="btn btn-link" href="about.html">
+            Learn more about us
+            <svg class="btn-link-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DIRECTOR'S MESSAGE
+         Editorial layout with left portrait + right pull-quote.
+         Content sourced from the school's official Director's Desk.
+    ============================================================= -->
+    <section class="section principal" aria-labelledby="directorTitle">
+      <div class="container principal-inner">
+
+        <div class="principal-portrait" data-reveal>
+          <img
+            src="assets/images/Director photo.jpg"
+            alt="Richa Sharma, Director of Shemford Futuristic School"
+            loading="lazy"
+          />
+          <div class="principal-portrait-meta">
+            <p class="principal-name">Richa Sharma</p>
+            <p class="principal-role">Director &middot; Shemford Futuristic School</p>
+          </div>
+        </div>
+
+        <div class="principal-copy" data-reveal>
+          <p class="eyebrow">Director&rsquo;s Desk</p>
+          <h2 id="directorTitle" class="section-title">
+            A message from our Director
+          </h2>
+
+          <blockquote class="pull-quote">
+            &ldquo;A school should be the place where a child&rsquo;s future
+            truly takes shape.&rdquo;
+          </blockquote>
+
+          <p class="principal-note">
+            In today&rsquo;s world, schools make tall claims &mdash; but the
+            real test is what actually reaches the child. We invite every
+            parent to visit us and see for themselves.
+          </p>
+
+          <p class="principal-note">
+            Our mission is to shape children into noble human beings, not
+            merely well-educated ones. We promise to work at our best capacity
+            to ensure the holistic growth of every enrolled student, confident
+            in the team of dedicated teachers who share this goal.
+          </p>
+
+          <p class="principal-note">
+            Together, we can transform our town, state and country into a
+            wonderful place to live in &mdash; preparing our students to face
+            a competitive world with courage, confidence and wisdom.
+          </p>
+        </div>
+
+      </div>
+    </section>
+<!-- ============================================================
+     WHAT DOES SHEMFORD STAND FOR?
+     Eight-letter acronym explainer. Purely editorial, no claims.
+============================================================= -->
+<section class="section shemford-meaning" aria-labelledby="shemfordTitle">
+  <div class="container">
+
+    <header class="section-head section-head-center" data-reveal>
+      <p class="eyebrow">Our Name, Our Promise</p>
+      <h2 id="shemfordTitle" class="section-title">
+        What Does <span class="accent">SHEMFORD</span> Stand For?
+      </h2>
+      <p class="section-sub">
+        Each letter of our name reflects a value we bring into everyday school life.
+      </p>
+    </header>
+
+    <ol class="letter-grid">
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">S</span>
+        <h3 class="letter-word">Systematic</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">H</span>
+        <h3 class="letter-word">Harmonious</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">E</span>
+        <h3 class="letter-word">Engaging</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">M</span>
+        <h3 class="letter-word">Meritorious</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">F</span>
+        <h3 class="letter-word">Fun</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">O</span>
+        <h3 class="letter-word">Original</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">R</span>
+        <h3 class="letter-word">Rigorous</h3>
+      </li>
+      <li class="letter-card" data-reveal>
+        <span class="letter-letter" aria-hidden="true">D</span>
+        <h3 class="letter-word">Dynamic</h3>
+      </li>
+    </ol>
+
+  </div>
+</section>
+    <!-- ============================================================
+         WHY CHOOSE / HIGHLIGHTS
+         Uses only what the school has actually stated.
+    ============================================================= -->
+    <section class="section highlights" aria-labelledby="highlightsTitle">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Why Shemford</p>
+          <h2 id="highlightsTitle" class="section-title">What our school stands for</h2>
+          <p class="section-sub">
+            A quick look at the values and approach that define our school.
+          </p>
+        </header>
+
+        <div class="highlight-grid">
+          <article class="highlight" data-reveal>
+            <span class="highlight-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>CBSE Curriculum</h3>
+            <p>An academic structure aligned with the CBSE framework.</p>
+          </article>
+
+          <article class="highlight" data-reveal>
+            <span class="highlight-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Holistic Development</h3>
+            <p>Focus on academics, character and co-curricular growth together.</p>
+          </article>
+
+          <article class="highlight" data-reveal>
+            <span class="highlight-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-11a7 7 0 1114 0c0 6.5-7 11-7 11z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <h3>Accessible Location</h3>
+            <p>Located on Dumri, Patna Bypass Road, Muzaffarpur, Bihar.</p>
+          </article>
+
+          <article class="highlight" data-reveal>
+            <span class="highlight-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Future-Focused Learning</h3>
+            <p>An environment designed to prepare students for what comes next.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+    <!-- ============================================================
+         FACILITIES & PROGRAMS
+         Content sourced from the school's official brochure.
+         Each entry is a real program offered at the school.
+    ============================================================= -->
+    <section class="section facilities" id="facilities" aria-labelledby="facilitiesTitle">
+      <div class="container">
+
+        <header class="section-head section-head-row" data-reveal>
+          <div>
+            <p class="eyebrow">Campus &amp; Curriculum</p>
+            <h2 id="facilitiesTitle" class="section-title">Facilities &amp; programs</h2>
+            <p class="section-sub">
+              Academic, co-curricular and developmental programs offered at the school.
+            </p>
+          </div>
+          <a class="btn btn-link" href="facilities.html">
+            View all facilities
+            <svg class="btn-link-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </header>
+
+        <div class="facility-grid">
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 9.5l-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.5-1L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="facility-title">Annual Day Function</h3>
+            <p class="facility-detail">
+              A vibrant pedagogical tool and celebration of the academic calendar
+              that contributes significantly to students&rsquo; cognitive
+              development and skill enhancement. Every student is given a
+              platform to perform and showcase their talent in dancing, singing
+              and acting.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 3v6l-5 9a2 2 0 001.8 3h12.4a2 2 0 001.8-3L15 9V3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 3h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="facility-title">Science Exhibition</h3>
+            <p class="facility-detail">
+              Conducted in our school to encourage students to be inquisitive and
+              think analytically. It ignites curiosity and offers chances for
+              students to engage in inquiry-based learning, allowing them to
+              explore hypotheses and find answers on their own.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 21c1-3.5 3.7-5.5 7-5.5s6 2 7 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="facility-title">Investiture Ceremony</h3>
+            <p class="facility-detail">
+              A platform to recognise and inculcate leadership qualities among
+              students. By honouring students with leadership positions, the
+              school reinforces the importance of leadership and develops
+              essential leadership skills and responsibility.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-8 9 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="facility-title">Educational Trips</h3>
+            <p class="facility-detail">
+              Give students a break from the traditional classroom setting and
+              allow them to learn in a more fun and interactive way &mdash;
+              Wildlife Sanctuary, Zoo, Trekking, Excursion, and visits to
+              historical places, monuments and sight-seeing destinations.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 4c2.5 2.5 2.5 12.5 0 16M4 12h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="facility-title">Sports Day</h3>
+            <p class="facility-detail">
+              Sports are vital for holistic development of students, fostering
+              physical fitness, teamwork, discipline and character. We take
+              sports seriously and organise Sports Day games every year as a
+              significant part of the curriculum.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="facility-title">Science Olympiad Foundation</h3>
+            <p class="facility-detail">
+              Promotes students&rsquo; scientific reasoning and logical
+              abilities, evaluates understanding of cyber concepts and
+              mathematical abilities, assesses English language skills, and
+              cultivates interest in general knowledge and current events
+              through participation in Science Olympiad Foundation programs
+              for different subjects.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="9" r="2.5" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="9" r="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M2 20c.8-3 3-4.5 5-4.5s4.2 1.5 5 4.5M12 20c.8-3 3-4.5 5-4.5s4.2 1.5 5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="facility-title">Co-curricular Activities</h3>
+            <p class="facility-detail">
+              Aim to fuel learning and build important life skills &mdash;
+              leadership, organisation, confidence and socialisation. Math Club,
+              Writing Club, Chess Club, Sports Club, Science Club, Debate Club,
+              Quiz Club and Student Council.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5C4 5.7 4.7 5 5.5 5H12v14H5.5c-.8 0-1.5-.7-1.5-1.5V6.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 6.5c0-.8-.7-1.5-1.5-1.5H12v14h6.5c.8 0 1.5-.7 1.5-1.5V6.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="facility-title">Teacher&rsquo;s Training Programme</h3>
+            <p class="facility-detail">
+              In-house training programmes and workshops provided to teachers
+              as needed, offering opportunities for continuous professional
+              development &mdash; new ways, methods, strategies, skills and
+              tools &mdash; so they feel confident, happy and motivated to
+              achieve greater things with students.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h3v3H8zM13 8h3v3h-3zM8 13h3v3H8zM13 13h3v3h-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="facility-title">Vedic Maths &amp; Abacus</h3>
+            <p class="facility-detail">
+              A systematic process of calculation that helps eradicate the
+              phobia for Maths among children. With practice, the child is able
+              to do calculations mentally and at great speed, which is helpful
+              in competitive exams. Part of our curriculum since inception.
+            </p>
+          </article>
+
+          <article class="facility-card" data-reveal>
+            <span class="facility-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 6l-4 6 4 6M16 6l4 6-4 6M14 4l-4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 class="facility-title">Coding</h3>
+            <p class="facility-detail">
+              Introductory coding classes incorporated as part of the K&ndash;12
+              curriculum. The skills learnt through coding extend beyond the
+              computer and digital use, and are applied to activities that span
+              well beyond the coding space.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- ============================================================
+         ACHIEVEMENTS / WALL OF FAME
+         Content sourced from the school's official achievement list.
+         Each entry is a real, dated achievement — none are invented.
+    ============================================================= -->
+    <section class="section achievements" id="achievements" aria-labelledby="achievementsTitle">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Wall of Fame</p>
+          <h2 id="achievementsTitle" class="section-title">Our achievements</h2>
+          <p class="section-sub">
+            Recognitions earned by our students and school across academics,
+            sports and co-curricular platforms.
+          </p>
+        </header>
+
+        <ol class="achievement-grid">
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">Academics</span>
+            <h3 class="achievement-title">Rank 1 in the district</h3>
+            <p class="achievement-detail">
+              99% marks in CBSE Class X Board Examination, session 2022&ndash;23.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">National Award</span>
+            <h3 class="achievement-title">India K&ndash;12 Awards 2023</h3>
+            <p class="achievement-detail">
+              Honoured for Quality Inclusive Education and Excellence in
+              Enrichment Activities &amp; Skill Development Programmes at the
+              Eldrok India K&ndash;12 Summit.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">Abacus &amp; Vedic Maths</span>
+            <h3 class="achievement-title">National Level Champion 2022</h3>
+            <p class="achievement-detail">
+              Our student won the National Level Championship of Abacus &amp;
+              Vedic Maths, organised by AVAS and IIVA New Delhi.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">Football</span>
+            <h3 class="achievement-title">National Level &mdash; Bihar Sub Junior</h3>
+            <p class="achievement-detail">
+              Our student represented Bihar at the All India Sub Junior Football
+              Boys National in West Bengal, 3&ndash;13 September 2023.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">Kho&ndash;Kho</span>
+            <h3 class="achievement-title">National Level Representation</h3>
+            <p class="achievement-detail">
+              Our student played at the National Level for the state in
+              Kho&ndash;Kho, held in Maharashtra, 10&ndash;17 December 2023.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">Karate &middot; Wrestling &middot; Chess</span>
+            <h3 class="achievement-title">Multiple gold medals &amp; team trophies</h3>
+            <p class="achievement-detail">
+              Won at District Level Sansad Khel Mahotsav (Sikandarpur,
+              May 2023), District Level Sub Juniors under&ndash;15 &amp;
+              under&ndash;12 (May 2023), and Inter School Cum District
+              Wrestling Championship, Sikandarpur, Muzaffarpur, 7&ndash;8 July 2023.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">School Games Federation of India</span>
+            <h3 class="achievement-title">Kho&ndash;Kho team winners</h3>
+            <p class="achievement-detail">
+              Our Kho&ndash;Kho team was winner in the team game, and the school
+              was declared District Winner in Chess U&ndash;14 Boys&rsquo;.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">State &amp; National Level</span>
+            <h3 class="achievement-title">Laurels across multiple streams</h3>
+            <p class="achievement-detail">
+              A number of our students have represented Bihar at State Level in
+              different streams, and the school has won prizes at District,
+              State and National levels.
+            </p>
+          </li>
+
+          <li class="achievement-card" data-reveal>
+            <span class="achievement-tag">Science Exhibition</span>
+            <h3 class="achievement-title">CBSE Regional Science Exhibition 2023&ndash;24</h3>
+            <p class="achievement-detail">
+              Two students of Class 9 were selected and called for presentation
+              at the CBSE Regional Science Exhibition.
+            </p>
+          </li>
+
+        </ol>
+
+      </div>
+    </section>
+    <!-- ============================================================
+         GALLERY
+         Masonry-style CSS grid. Images are optional at load.
+    ============================================================= -->
+    <section class="section gallery" aria-labelledby="galleryTitle">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Campus Life</p>
+          <h2 id="galleryTitle" class="section-title">Life at Shemford</h2>
+        </header>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item gallery-item-tall">
+            <img src="assets/images/images (3).jfif" alt="Campus life at Shemford Futuristic School" loading="lazy" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/images/images (4).jfif" alt="School activity" loading="lazy" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/images/images5.jfif" alt="Classroom activity" loading="lazy" />
+          </figure>
+          <figure class="gallery-item gallery-item-wide">
+            <img src="assets/images/life at shemford 1.jfif" alt="School event" loading="lazy" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/images/images6.jfif" alt="Student life" loading="lazy" />
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+         Address is real. Phone/email/map are clearly placeholders.
+    ============================================================= -->
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="container contact-inner">
+
+        <div class="contact-copy" data-reveal>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contactTitle" class="section-title">Visit or reach out</h2>
+
+          <dl class="contact-list">
+            <div class="contact-item">
+              <dt>Address</dt>
+              <dd>
+                Dumri, Patna Bypass Road,<br />
+                Dumri &ndash; Gobarsahi Rd,<br />
+                Muzaffarpur, Bihar 843113
+              </dd>
+            </div>
+            <div class="contact-item">
+              <dt>Phone</dt>
+              <dd>[PHONE NUMBER]</dd>
+            </div>
+            <div class="contact-item">
+              <dt>Email</dt>
+              <dd>[EMAIL ADDRESS]</dd>
+            </div>
+            <div class="contact-item">
+              <dt>Affiliation</dt>
+              <dd>CBSE</dd>
+            </div>
+          </dl>
+
+          <a class="btn btn-primary" href="contact.html">Contact the school</a>
+        </div>
+
+        <div class="contact-map" data-reveal>
+          <div class="map-placeholder">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p class="map-title">Map placeholder</p>
+            <p class="map-note">
+              Embed Google Maps for Dumri, Patna Bypass Road, Muzaffarpur here.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <img
+          class="footer-logo"
+          src="assets/images/logo.png"
+          alt="Shemford Futuristic School logo"
+          width="44" height="44"
+        />
+        <p class="footer-school">Shemford Futuristic School</p>
+        <p class="footer-text">
+          Dumri, Patna Bypass Road,<br />
+          Dumri &ndash; Gobarsahi Rd,<br />
+          Muzaffarpur, Bihar 843113
+        </p>
+        <p class="footer-text">Affiliated to CBSE</p>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Explore</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="notices.html">Notices</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Contact</h3>
+        <ul class="footer-links">
+          <li>[PHONE NUMBER]</li>
+          <li>[EMAIL ADDRESS]</li>
+          <li>Muzaffarpur, Bihar</li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-heading">Follow</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="https://www.facebook.com/p/Shemford-Futuristic-School-Muzaffarpur-100063790661251/" target="_blank" rel="noopener">
+              Facebook
+            </a>
+          </li>
+          <li><a href="#" aria-disabled="true">Instagram</a></li>
+          <li><a href="#" aria-disabled="true">YouTube</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year">2025</span> Shemford Futuristic School. All rights reserved.</p>
+      <p class="footer-meta">Website in development &middot; Student portal coming soon</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

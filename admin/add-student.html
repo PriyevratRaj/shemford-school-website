@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Add Student — Admin Portal, Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Add Student — Admin Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="add-student.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD
+  ============================================================= -->
+  <div class="dash-guard" id="dashGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Checking your account...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="dashShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="dashMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="dashSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Admin dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Admin Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="dashNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="dashUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="dashUserName">Loading…</span>
+            <span class="dash-user-role">Admin</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="dashLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Admin navigation">
+      <nav class="dash-nav">
+
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="dashboard.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+        </ul>
+
+        <!-- Students group -->
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle is-open"
+            data-target="navStudents"
+            aria-expanded="true"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.8-3 3-4.5 6-4.5s5.2 1.5 6 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="10" r="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M14 20c.5-2 1.8-3.2 3-3.2s2.5 1.2 3 3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Students
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <ul class="dash-nav-sublist" id="navStudents">
+            <li><a class="dash-nav-link" href="students.html">Student List</a></li>
+            <li><a class="dash-nav-link is-active" href="add-student.html" aria-current="page">Add Student</a></li>
+            <li><a class="dash-nav-link" href="manage-students.html">Manage Students</a></li>
+          </ul>
+        </div>
+
+        <!-- Teachers group -->
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle is-open"
+            data-target="navTeachers"
+            aria-expanded="true"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.5 4-5.5 7-5.5s5.8 2 7 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Teachers
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <ul class="dash-nav-sublist" id="navTeachers">
+            <li><a class="dash-nav-link" href="teachers.html">Teacher List</a></li>
+            <li><a class="dash-nav-link" href="add-teacher.html">Add Teacher</a></li>
+            <li><a class="dash-nav-link" href="manage-teachers.html">Manage Teachers</a></li>
+          </ul>
+        </div>
+
+        <!-- Schedules group -->
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle"
+            data-target="navSchedules"
+            aria-expanded="false"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Schedules
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <ul class="dash-nav-sublist" id="navSchedules" hidden>
+            <li>
+              <a class="dash-nav-link" href="#" aria-disabled="true">
+                Student Schedule
+                <span class="dash-nav-badge">Soon</span>
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="#" aria-disabled="true">
+                Teacher Schedule
+                <span class="dash-nav-badge">Soon</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M8 15l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Teacher Attendance
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Settings
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="dashBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- PAGE HEAD -->
+      <section class="as-page-head">
+        <a class="as-back" href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <h1 class="as-page-title">Add Student</h1>
+        <p class="as-page-sub">
+          Create a new student account and school profile.
+        </p>
+      </section>
+
+      <!-- ALERT -->
+      <div class="as-alert" id="asAlert" role="alert" hidden></div>
+
+      <!-- FORM CARD -->
+      <section class="as-card" aria-labelledby="asFormTitle">
+        <header class="as-card-head">
+          <h2 class="as-card-title" id="asFormTitle">Student Details</h2>
+          <p class="as-card-sub">
+            Fields marked <span class="as-required-mark">*</span> are required.
+          </p>
+        </header>
+
+        <form class="as-form" id="asForm" novalidate autocomplete="off">
+
+          <div class="as-grid">
+
+            <div class="as-field as-field-full">
+              <label for="asFullName">
+                Full Name <span class="as-required-mark">*</span>
+              </label>
+              <input
+                type="text"
+                id="asFullName"
+                name="full_name"
+                maxlength="120"
+                placeholder="e.g. Rohan Kumar"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <div class="as-field">
+              <label for="asEmail">
+                Email <span class="as-required-mark">*</span>
+              </label>
+              <input
+                type="email"
+                id="asEmail"
+                name="email"
+                maxlength="160"
+                placeholder="student@example.com"
+                autocomplete="off"
+                inputmode="email"
+                spellcheck="false"
+                required
+              />
+            </div>
+
+            <div class="as-field">
+              <label for="asPassword">
+                Password <span class="as-required-mark">*</span>
+              </label>
+              <div class="as-password-wrap">
+                <input
+                  type="password"
+                  id="asPassword"
+                  name="password"
+                  minlength="8"
+                  placeholder="Minimum 8 characters"
+                  autocomplete="new-password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="as-password-toggle"
+                  id="asPasswordToggle"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                </button>
+              </div>
+              <p class="as-help">Minimum 8 characters. This becomes the student's login password.</p>
+            </div>
+
+            <div class="as-field">
+              <label for="asSchoolId">
+                School ID <span class="as-required-mark">*</span>
+              </label>
+              <input
+                type="text"
+                id="asSchoolId"
+                name="school_id"
+                maxlength="40"
+                placeholder="e.g. STU003"
+                autocomplete="off"
+                spellcheck="false"
+                autocapitalize="characters"
+                required
+              />
+              <p class="as-help">A unique ID used across the school system.</p>
+            </div>
+
+            <div class="as-field">
+              <label for="asClassSection">
+                Class &amp; Section <span class="as-required-mark">*</span>
+              </label>
+              <input
+                type="text"
+                id="asClassSection"
+                name="class_section"
+                maxlength="20"
+                placeholder="e.g. 8-A"
+                autocomplete="off"
+                spellcheck="false"
+                required
+              />
+              <p class="as-help">Format: class-section, e.g. 8-A or 10-B.</p>
+            </div>
+
+            <div class="as-field">
+              <label for="asRollNo">
+                Roll Number <span class="as-required-mark">*</span>
+              </label>
+              <input
+                type="number"
+                id="asRollNo"
+                name="roll_no"
+                min="1"
+                step="1"
+                inputmode="numeric"
+                placeholder="e.g. 12"
+                autocomplete="off"
+                required
+              />
+              <p class="as-help">A positive whole number.</p>
+            </div>
+
+            <div class="as-field">
+              <label for="asPhone">Phone</label>
+              <input
+                type="tel"
+                id="asPhone"
+                name="phone"
+                maxlength="20"
+                placeholder="e.g. 9876543210"
+                autocomplete="off"
+                inputmode="tel"
+              />
+              <p class="as-help">Optional. Stored for future use — not sent to the server yet.</p>
+            </div>
+
+          </div>
+
+          <div class="as-form-actions">
+            <button type="submit" class="btn btn-primary as-submit" id="asSubmitBtn">
+              <span class="as-submit-label">Create Student</span>
+              <span class="as-submit-spinner" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-outline" id="asResetBtn">
+              Reset Form
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- SUCCESS PANEL -->
+      <section class="as-success" id="asSuccess" hidden aria-live="polite">
+        <h3 class="as-success-title">Student account created successfully.</h3>
+        <p class="as-success-text">
+          The student can now log in using the email and password you provided.
+        </p>
+
+        <dl class="as-success-facts" id="asSuccessFacts">
+          <div class="as-success-fact">
+            <dt>Full Name</dt>
+            <dd id="asSuccessName">—</dd>
+          </div>
+          <div class="as-success-fact">
+            <dt>School ID</dt>
+            <dd id="asSuccessSchoolId">—</dd>
+          </div>
+          <div class="as-success-fact">
+            <dt>Class &amp; Section</dt>
+            <dd id="asSuccessClass">—</dd>
+          </div>
+          <div class="as-success-fact">
+            <dt>Roll Number</dt>
+            <dd id="asSuccessRoll">—</dd>
+          </div>
+          <div class="as-success-fact">
+            <dt>Email</dt>
+            <dd id="asSuccessEmail">—</dd>
+          </div>
+        </dl>
+
+        <div class="as-success-actions">
+          <button type="button" class="btn btn-primary" id="asAddAnotherBtn">
+            Add Another Student
+          </button>
+          <a class="btn btn-outline" href="dashboard.html">
+            Back to Dashboard
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="dashboard.js"></script>
+  <script src="add-student.js"></script>
+</body>
+</html>

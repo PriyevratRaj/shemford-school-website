@@ -1,0 +1,299 @@
+/* ============================================================
+   ADD TEACHER — STYLES
+   Reuses design tokens from ../style.css and the dash-* shell
+   from dashboard.css. Adds only the page-specific at-* rules.
+   ============================================================= */
+
+/* ------------------------------------------------------------
+   PAGE HEAD
+------------------------------------------------------------ */
+.at-page-head { margin-bottom: 1.5rem; }
+
+.at-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-decoration: none;
+  margin-bottom: .75rem;
+}
+.at-back:hover { color: var(--primary); }
+
+.at-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 .35rem;
+  line-height: 1.2;
+}
+
+.at-page-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0;
+  max-width: 65ch;
+}
+
+/* ------------------------------------------------------------
+   ALERT BANNER
+------------------------------------------------------------ */
+.at-alert {
+  padding: .85rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: .92rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+}
+.at-alert[hidden] { display: none; }
+.at-alert.is-success {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #065F46;
+}
+.at-alert.is-error {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #991B1B;
+}
+.at-alert.is-info {
+  background: var(--primary-light);
+  border-color: var(--primary-tint);
+  color: var(--primary-dark);
+}
+
+/* ------------------------------------------------------------
+   CARD
+------------------------------------------------------------ */
+.at-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.at-card-head { margin-bottom: 1.5rem; }
+
+.at-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 .25rem;
+}
+
+.at-card-sub {
+  color: var(--muted);
+  font-size: .88rem;
+  margin: 0;
+}
+
+.at-required-mark {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+   FORM LAYOUT
+------------------------------------------------------------ */
+.at-form { display: block; }
+
+.at-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.at-field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  min-width: 0;
+}
+.at-field-full { grid-column: 1 / -1; }
+
+.at-field label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.at-field input[type="text"],
+.at-field input[type="email"],
+.at-field input[type="tel"],
+.at-field input[type="password"],
+.at-field input[type="date"] {
+  width: 100%;
+  padding: .72rem .9rem;
+  font: inherit;
+  font-size: .93rem;
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease),
+              background-color .18s var(--ease);
+  font-family: var(--font-body);
+}
+
+.at-field input::placeholder { color: #9CA3AF; }
+
+.at-field input:hover { border-color: #B8BFCB; }
+
+.at-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+}
+
+.at-field input[aria-invalid="true"] {
+  border-color: #DC2626;
+  box-shadow: 0 0 0 4px rgba(220,38,38,.12);
+}
+
+.at-field input:disabled {
+  background: var(--gray-50);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.at-help {
+  font-size: .78rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   PASSWORD FIELD + TOGGLE
+------------------------------------------------------------ */
+.at-password-wrap {
+  position: relative;
+}
+.at-password-wrap input { padding-right: 2.75rem; }
+
+.at-password-toggle {
+  position: absolute;
+  right: .35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background-color .15s var(--ease), color .15s var(--ease);
+}
+.at-password-toggle:hover {
+  background: var(--gray-100);
+  color: var(--dark);
+}
+.at-password-toggle[aria-pressed="true"] {
+  color: var(--primary-dark);
+}
+
+/* ------------------------------------------------------------
+   FORM ACTIONS
+------------------------------------------------------------ */
+.at-form-actions {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.at-submit {
+  min-width: 180px;
+  padding: .85rem 1.4rem;
+}
+
+/* Submit button loading state */
+.at-submit-spinner {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.5);
+  border-top-color: #fff;
+  animation: atSpin .7s linear infinite;
+  margin-left: .5rem;
+}
+@keyframes atSpin { to { transform: rotate(360deg); } }
+
+#atSubmitBtn.is-loading .at-submit-label { opacity: .75; }
+#atSubmitBtn.is-loading .at-submit-spinner { display: inline-block; }
+#atSubmitBtn.is-loading { pointer-events: none; }
+
+/* ------------------------------------------------------------
+   SUCCESS PANEL
+------------------------------------------------------------ */
+.at-success {
+  background: var(--white);
+  border: 1px solid #A7F3D0;
+  border-left: 4px solid #16A34A;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.at-success[hidden] { display: none; }
+
+.at-success-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #065F46;
+  margin: 0 0 .5rem;
+}
+
+.at-success-text {
+  color: var(--text);
+  font-size: .93rem;
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+  max-width: 65ch;
+}
+
+.at-success-actions {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------------ */
+@media (max-width: 768px) {
+  .at-card { padding: 1.35rem 1.35rem 1.5rem; }
+  .at-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .at-form-actions { flex-direction: column; align-items: stretch; }
+  .at-submit { width: 100%; min-width: 0; }
+  .at-form-actions .btn { width: 100%; justify-content: center; }
+  .at-success { padding: 1.35rem 1.35rem; }
+  .at-success-actions { flex-direction: column; align-items: stretch; }
+  .at-success-actions .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 520px) {
+  .at-page-title { font-size: 1.35rem; }
+  .at-card-title { font-size: 1.05rem; }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .at-submit-spinner { animation: none; }
+  .at-field input,
+  .at-password-toggle { transition: none; }
+}

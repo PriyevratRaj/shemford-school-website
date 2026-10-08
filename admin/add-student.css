@@ -1,0 +1,343 @@
+/* ============================================================
+ADD STUDENT — STYLES
+Reuses design tokens from ../style.css and the dash-* shell
+from dashboard.css. Page-specific classes are prefixed as-*
+to avoid collisions with the add-teacher page (at-*).
+============================================================ */
+
+/* ------------------------------------------------------------
+PAGE HEAD
+------------------------------------------------------------ */
+.as-page-head { margin-bottom: 1.5rem; }
+
+.as-back {
+display: inline-flex;
+align-items: center;
+gap: .35rem;
+font-size: .85rem;
+font-weight: 600;
+color: var(--primary-dark);
+text-decoration: none;
+margin-bottom: .75rem;
+}
+.as-back:hover { color: var(--primary); }
+
+.as-page-title {
+font-family: var(--font-display);
+font-size: clamp(1.5rem, 2.5vw, 2rem);
+font-weight: 600;
+color: var(--dark);
+margin: 0 0 .35rem;
+line-height: 1.2;
+}
+
+.as-page-sub {
+color: var(--muted);
+font-size: 1rem;
+margin: 0;
+max-width: 65ch;
+}
+
+/* ------------------------------------------------------------
+ALERT BANNER
+------------------------------------------------------------ */
+.as-alert {
+padding: .85rem 1.1rem;
+border-radius: var(--radius-sm);
+font-size: .92rem;
+line-height: 1.55;
+margin-bottom: 1.25rem;
+border: 1px solid transparent;
+}
+.as-alert[hidden] { display: none; }
+.as-alert.is-success {
+background: #ECFDF5;
+border-color: #A7F3D0;
+color: #065F46;
+}
+.as-alert.is-error {
+background: #FEF2F2;
+border-color: #FECACA;
+color: #991B1B;
+}
+.as-alert.is-info {
+background: var(--primary-light);
+border-color: var(--primary-tint);
+color: var(--primary-dark);
+}
+
+/* ------------------------------------------------------------
+CARD
+------------------------------------------------------------ */
+.as-card {
+background: var(--white);
+border: 1px solid var(--border);
+border-radius: var(--radius-lg);
+padding: 1.75rem 2rem 2rem;
+margin-bottom: 1.5rem;
+}
+
+.as-card-head { margin-bottom: 1.5rem; }
+
+.as-card-title {
+font-family: var(--font-display);
+font-size: 1.15rem;
+font-weight: 600;
+color: var(--dark);
+margin: 0 0 .25rem;
+}
+
+.as-card-sub {
+color: var(--muted);
+font-size: .88rem;
+margin: 0;
+}
+
+.as-required-mark {
+color: var(--primary);
+font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+FORM LAYOUT
+------------------------------------------------------------ */
+.as-form { display: block; }
+
+.as-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 1.15rem 1.5rem;
+margin-bottom: 1.75rem;
+}
+
+.as-field {
+display: flex;
+flex-direction: column;
+gap: .4rem;
+min-width: 0;
+}
+.as-field-full { grid-column: 1 / -1; }
+
+.as-field label {
+font-size: .82rem;
+font-weight: 600;
+color: var(--dark);
+}
+
+.as-field input[type="text"],
+.as-field input[type="email"],
+.as-field input[type="tel"],
+.as-field input[type="password"],
+.as-field input[type="number"] {
+width: 100%;
+padding: .72rem .9rem;
+font: inherit;
+font-size: .93rem;
+color: var(--dark);
+background: var(--white);
+border: 1px solid var(--border-strong);
+border-radius: var(--radius-sm);
+transition: border-color .18s var(--ease), box-shadow .18s var(--ease),
+background-color .18s var(--ease);
+font-family: var(--font-body);
+}
+
+.as-field input[type="number"]::-webkit-outer-spin-button,
+.as-field input[type="number"]::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.as-field input[type="number"] {
+-moz-appearance: textfield;
+appearance: textfield;
+}
+
+.as-field input::placeholder { color: #9CA3AF; }
+
+.as-field input:hover { border-color: #B8BFCB; }
+
+.as-field input:focus {
+outline: none;
+border-color: var(--primary);
+box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+}
+
+.as-field input[aria-invalid="true"] {
+border-color: #DC2626;
+box-shadow: 0 0 0 4px rgba(220,38,38,.12);
+}
+
+.as-field input:disabled {
+background: var(--gray-50);
+color: var(--muted);
+cursor: not-allowed;
+}
+
+.as-help {
+font-size: .78rem;
+color: var(--muted);
+margin: 0;
+line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+PASSWORD FIELD + TOGGLE
+------------------------------------------------------------ */
+.as-password-wrap {
+position: relative;
+}
+.as-password-wrap input { padding-right: 2.75rem; }
+
+.as-password-toggle {
+position: absolute;
+right: .35rem;
+top: 50%;
+transform: translateY(-50%);
+width: 34px;
+height: 34px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+border-radius: var(--radius-sm);
+color: var(--muted);
+background: transparent;
+border: 0;
+cursor: pointer;
+transition: background-color .15s var(--ease), color .15s var(--ease);
+}
+.as-password-toggle:hover {
+background: var(--gray-100);
+color: var(--dark);
+}
+.as-password-toggle[aria-pressed="true"] {
+color: var(--primary-dark);
+}
+
+/* ------------------------------------------------------------
+FORM ACTIONS
+------------------------------------------------------------ */
+.as-form-actions {
+display: flex;
+gap: .75rem;
+flex-wrap: wrap;
+padding-top: 1.25rem;
+border-top: 1px solid var(--border);
+}
+
+.as-submit {
+min-width: 180px;
+padding: .85rem 1.4rem;
+}
+
+.as-submit-spinner {
+display: none;
+width: 14px;
+height: 14px;
+border-radius: 50%;
+border: 2px solid rgba(255,255,255,.5);
+border-top-color: #fff;
+animation: asSpin .7s linear infinite;
+margin-left: .5rem;
+}
+@keyframes asSpin { to { transform: rotate(360deg); } }
+
+#asSubmitBtn.is-loading .as-submit-label { opacity: .75; }
+#asSubmitBtn.is-loading .as-submit-spinner { display: inline-block; }
+#asSubmitBtn.is-loading { pointer-events: none; }
+
+/* ------------------------------------------------------------
+SUCCESS PANEL
+------------------------------------------------------------ */
+.as-success {
+background: var(--white);
+border: 1px solid #A7F3D0;
+border-left: 4px solid #16A34A;
+border-radius: var(--radius-lg);
+padding: 1.75rem 2rem;
+margin-bottom: 1.5rem;
+}
+.as-success[hidden] { display: none; }
+
+.as-success-title {
+font-family: var(--font-display);
+font-size: 1.15rem;
+font-weight: 600;
+color: #065F46;
+margin: 0 0 .5rem;
+}
+
+.as-success-text {
+color: var(--text);
+font-size: .93rem;
+line-height: 1.65;
+margin: 0 0 1.25rem;
+max-width: 65ch;
+}
+
+.as-success-facts {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem 1.5rem;
+margin: 0 0 1.5rem;
+padding: 1.15rem 1.25rem;
+background: var(--gray-50);
+border: 1px solid var(--border);
+border-radius: var(--radius);
+}
+
+.as-success-fact { min-width: 0; }
+.as-success-fact dt {
+font-size: .65rem;
+font-weight: 700;
+letter-spacing: .14em;
+text-transform: uppercase;
+color: var(--muted);
+margin: 0 0 .25rem;
+}
+.as-success-fact dd {
+margin: 0;
+color: var(--dark);
+font-weight: 600;
+font-size: .92rem;
+word-break: break-word;
+}
+
+.as-success-actions {
+display: flex;
+gap: .75rem;
+flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+RESPONSIVE
+------------------------------------------------------------ */
+@media (max-width: 860px) {
+.as-success-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+.as-card { padding: 1.35rem 1.35rem 1.5rem; }
+.as-grid { grid-template-columns: 1fr; gap: 1rem; }
+.as-form-actions { flex-direction: column; align-items: stretch; }
+.as-submit { width: 100%; min-width: 0; }
+.as-form-actions .btn { width: 100%; justify-content: center; }
+.as-success { padding: 1.35rem 1.35rem; }
+.as-success-facts { grid-template-columns: 1fr; gap: .85rem; }
+.as-success-actions { flex-direction: column; align-items: stretch; }
+.as-success-actions .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 520px) {
+.as-page-title { font-size: 1.35rem; }
+.as-card-title { font-size: 1.05rem; }
+}
+
+/* ------------------------------------------------------------
+REDUCED MOTION
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+.as-submit-spinner { animation: none; }
+.as-field input,
+.as-password-toggle { transition: none; }
+}
+

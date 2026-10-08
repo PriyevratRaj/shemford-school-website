@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teacher Attendance — Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Attendance — Teacher Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="attendance.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD — shown while authentication is being checked
+  ============================================================= -->
+  <div class="dash-guard" id="dashGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Checking your account…</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="dashShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="dashMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="dashSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Teacher dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Teacher Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="dashNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="dashUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="dashUserName">Loading…</span>
+            <span class="dash-user-role">Teacher</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="dashLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Teacher navigation">
+      <nav class="dash-nav">
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="dashboard.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="homework.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              📚 Homework
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link is-active" href="attendance.html" aria-current="page">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M8 14l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Attendance
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              My Classes
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.8-3 3-4.5 6-4.5s5.2 1.5 6 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="10" r="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M14 20c.5-2 1.8-3.2 3-3.2s2.5 1.2 3 3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Students
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Announcements
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Settings
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="dashBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- PAGE HEAD -->
+      <section class="att-page-head">
+        <a class="att-back" href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <h1 class="att-page-title">Student Attendance</h1>
+        <p class="att-page-sub">Mark attendance for your students.</p>
+        <span class="att-test-badge">Test Mode — Temporary Students</span>
+      </section>
+
+      <!-- ALERT -->
+      <div class="att-alert" id="attAlert" role="alert" hidden></div>
+
+      <!-- ============================================================
+           CONTROLS
+      ============================================================= -->
+      <section class="att-card" aria-labelledby="attControlsTitle">
+        <h2 class="att-card-title" id="attControlsTitle">Select class and date</h2>
+
+        <div class="att-controls">
+          <div class="att-field">
+            <label for="attClass">Class</label>
+            <select id="attClass">
+              <option value="">Select class</option>
+              <option value="1-A">Class 1-A</option>
+              <option value="1-B">Class 1-B</option>
+              <option value="1-C">Class 1-C</option>
+              <option value="2-A">Class 2-A</option>
+              <option value="2-B">Class 2-B</option>
+              <option value="2-C">Class 2-C</option>
+              <option value="3-A">Class 3-A</option>
+              <option value="3-B">Class 3-B</option>
+              <option value="3-C">Class 3-C</option>
+              <option value="4-A">Class 4-A</option>
+              <option value="4-B">Class 4-B</option>
+              <option value="4-C">Class 4-C</option>
+              <option value="5-A">Class 5-A</option>
+              <option value="5-B">Class 5-B</option>
+              <option value="5-C">Class 5-C</option>
+              <option value="6-A">Class 6-A</option>
+              <option value="6-B">Class 6-B</option>
+              <option value="6-C">Class 6-C</option>
+              <option value="7-A">Class 7-A</option>
+              <option value="7-B">Class 7-B</option>
+              <option value="7-C">Class 7-C</option>
+              <option value="8-A">Class 8-A</option>
+              <option value="8-B">Class 8-B</option>
+              <option value="8-C">Class 8-C</option>
+              <option value="9-A">Class 9-A</option>
+              <option value="9-B">Class 9-B</option>
+              <option value="9-C">Class 9-C</option>
+              <option value="10-A">Class 10-A</option>
+              <option value="10-B">Class 10-B</option>
+              <option value="10-C">Class 10-C</option>
+            </select>
+          </div>
+
+          <div class="att-field">
+            <label for="attDate">Attendance Date</label>
+            <input type="date" id="attDate" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SUMMARY
+      ============================================================= -->
+      <section class="att-summary" id="attSummary" hidden aria-label="Attendance summary">
+        <div class="att-summary-item">
+          <span class="att-summary-label">Total Students</span>
+          <span class="att-summary-value" id="sumTotal">0</span>
+        </div>
+        <div class="att-summary-item">
+          <span class="att-summary-label">Present</span>
+          <span class="att-summary-value att-summary-present" id="sumPresent">0</span>
+        </div>
+        <div class="att-summary-item">
+          <span class="att-summary-label">Absent</span>
+          <span class="att-summary-value att-summary-absent" id="sumAbsent">0</span>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           BULK ACTIONS
+      ============================================================= -->
+      <div class="att-bulk" id="attBulk" hidden>
+        <span class="att-bulk-label">Quick actions:</span>
+        <button type="button" class="att-bulk-btn att-bulk-present" id="bulkPresent">
+          Mark All Present
+        </button>
+        <button type="button" class="att-bulk-btn att-bulk-absent" id="bulkAbsent">
+          Mark All Absent
+        </button>
+      </div>
+
+      <!-- ============================================================
+           EMPTY PROMPT
+      ============================================================= -->
+      <div class="att-empty" id="attEmpty">
+        <p class="att-empty-title" id="attEmptyTitle">Select a class to begin</p>
+        <p class="att-empty-text" id="attEmptyText">
+          Choose a class and date above to load the student list.
+        </p>
+      </div>
+
+      <!-- ============================================================
+           DESKTOP TABLE
+      ============================================================= -->
+      <div class="att-table-wrap" id="attTableWrap" hidden>
+        <table class="att-table">
+          <thead>
+            <tr>
+              <th scope="col" class="att-col-roll">Roll No.</th>
+              <th scope="col">Student</th>
+              <th scope="col" class="att-col-radio">Present</th>
+              <th scope="col" class="att-col-radio">Absent</th>
+            </tr>
+          </thead>
+          <tbody id="attTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- ============================================================
+           MOBILE CARDS
+      ============================================================= -->
+      <div class="att-cards" id="attCards" hidden></div>
+
+      <!-- ============================================================
+           SAVE
+      ============================================================= -->
+      <div class="att-save-bar" id="attSaveBar" hidden>
+        <button type="button" class="btn btn-primary att-save-btn" id="attSaveBtn">
+          <span class="att-save-label">Save Attendance</span>
+          <span class="att-save-spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="attendance.js"></script>
+</body>
+</html>

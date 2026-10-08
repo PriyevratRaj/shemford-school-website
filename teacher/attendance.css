@@ -1,0 +1,582 @@
+/* ============================================================
+   TEACHER ATTENDANCE — STYLES
+   Builds on teacher/dashboard.css and ../style.css.
+   ============================================================= */
+
+/* ------------------------------------------------------------
+   PAGE HEAD
+------------------------------------------------------------ */
+.att-page-head { margin-bottom: 1.5rem; }
+
+.att-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-decoration: none;
+  margin-bottom: .75rem;
+}
+.att-back:hover { color: var(--primary); }
+
+.att-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 .35rem;
+  line-height: 1.2;
+}
+
+.att-page-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0 0 .75rem;
+}
+
+.att-test-badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  padding: .3rem .65rem;
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------------
+   ALERT
+------------------------------------------------------------ */
+.att-alert {
+  padding: .85rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: .92rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+}
+.att-alert[hidden] { display: none; }
+.att-alert.is-success {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #065F46;
+}
+.att-alert.is-error {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #991B1B;
+}
+.att-alert.is-info {
+  background: var(--primary-light);
+  border-color: var(--primary-tint);
+  color: var(--primary-dark);
+}
+
+/* ------------------------------------------------------------
+   CARD
+------------------------------------------------------------ */
+.att-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.att-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 1rem;
+}
+
+/* ------------------------------------------------------------
+   CONTROLS
+------------------------------------------------------------ */
+.att-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+.att-field { display: flex; flex-direction: column; gap: .4rem; }
+
+.att-field label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.att-field select,
+.att-field input[type="date"] {
+  width: 100%;
+  padding: .7rem .85rem;
+  font: inherit;
+  font-size: .93rem;
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+.att-field select:hover,
+.att-field input[type="date"]:hover { border-color: #B8BFCB; }
+
+.att-field select:focus,
+.att-field input[type="date"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+}
+
+/* ------------------------------------------------------------
+   SUMMARY
+------------------------------------------------------------ */
+.att-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+.att-summary[hidden] { display: none; }
+
+.att-summary-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.att-summary-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.att-summary-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.1;
+}
+.att-summary-present { color: #16A34A; }
+.att-summary-absent  { color: #DC2626; }
+
+/* ------------------------------------------------------------
+   BULK ACTIONS
+------------------------------------------------------------ */
+.att-bulk {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.att-bulk[hidden] { display: none; }
+
+.att-bulk-label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-right: .25rem;
+}
+
+.att-bulk-btn {
+  padding: .55rem 1rem;
+  font-size: .85rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--white);
+  color: var(--dark);
+  transition: background-color .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
+}
+.att-bulk-btn:hover { background: var(--gray-50); border-color: var(--dark); }
+.att-bulk-present:hover { border-color: #16A34A; color: #15803D; background: #ECFDF5; }
+.att-bulk-absent:hover  { border-color: #DC2626; color: #991B1B; background: #FEF2F2; }
+
+/* ------------------------------------------------------------
+   EMPTY
+------------------------------------------------------------ */
+.att-empty {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: var(--white);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.25rem;
+}
+.att-empty[hidden] { display: none; }
+
+.att-empty-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin: 0 0 .35rem;
+}
+.att-empty-text {
+  color: var(--muted);
+  font-size: .92rem;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   DESKTOP TABLE
+------------------------------------------------------------ */
+.att-table-wrap {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.att-table-wrap[hidden] { display: none; }
+
+.att-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.att-table thead th {
+  text-align: left;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: .9rem 1.15rem;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--border);
+}
+.att-col-roll { width: 90px; }
+.att-col-radio { width: 110px; text-align: center; }
+
+.att-table tbody td {
+  padding: .85rem 1.15rem;
+  border-bottom: 1px solid var(--border);
+  font-size: .93rem;
+  color: var(--dark);
+  vertical-align: middle;
+}
+.att-table tbody tr:last-child td { border-bottom: 0; }
+.att-table tbody tr:hover { background: var(--gray-50); }
+
+/* Roll number */
+.att-roll {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* Student cell */
+.att-student-cell {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  min-width: 0;
+}
+.att-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .82rem;
+  flex-shrink: 0;
+}
+.att-student-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+/* Radio cell — centered */
+.att-radio-cell { text-align: center; }
+
+/* ------------------------------------------------------------
+   RADIO BUTTONS (the important part)
+   We hide the native input and use a styled label as the
+   clickable target. The label is wrapped in a container so
+   the whole thing is keyboard-accessible via the input.
+------------------------------------------------------------ */
+.att-radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.att-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.att-radio-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--white);
+  transition: border-color .15s var(--ease), background-color .15s var(--ease);
+}
+
+.att-radio-mark::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color .15s var(--ease), transform .15s var(--ease);
+  transform: scale(.6);
+}
+
+/* Present selected */
+.att-radio-present input[type="radio"]:checked + .att-radio-mark {
+  border-color: #16A34A;
+}
+.att-radio-present input[type="radio"]:checked + .att-radio-mark::after {
+  background: #16A34A;
+  transform: scale(1);
+}
+
+/* Absent selected */
+.att-radio-absent input[type="radio"]:checked + .att-radio-mark {
+  border-color: #DC2626;
+}
+.att-radio-absent input[type="radio"]:checked + .att-radio-mark::after {
+  background: #DC2626;
+  transform: scale(1);
+}
+
+/* Hover */
+.att-radio:hover .att-radio-mark { border-color: var(--dark); }
+.att-radio-present:hover .att-radio-mark { border-color: #16A34A; }
+.att-radio-absent:hover .att-radio-mark { border-color: #DC2626; }
+
+/* Focus ring for keyboard users */
+.att-radio input[type="radio"]:focus-visible + .att-radio-mark {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   MOBILE CARDS
+------------------------------------------------------------ */
+.att-cards { display: none; }
+
+.att-card-student {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  margin-bottom: .75rem;
+}
+
+.att-card-student-top {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: .85rem;
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.att-card-student-info { min-width: 0; flex: 1; }
+
+.att-card-roll {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.att-card-student-name {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1rem;
+  margin-top: .15rem;
+}
+
+.att-card-student-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.att-card-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .65rem .5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--white);
+  cursor: pointer;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--dark);
+  transition: background-color .15s var(--ease), border-color .15s var(--ease), color .15s var(--ease);
+  position: relative;
+}
+
+.att-card-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.att-card-radio-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--white);
+  flex-shrink: 0;
+  transition: border-color .15s var(--ease);
+}
+.att-card-radio-mark::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color .15s var(--ease);
+}
+
+/* Present on mobile */
+.att-card-radio-present:has(input[type="radio"]:checked) {
+  border-color: #16A34A;
+  background: #ECFDF5;
+  color: #15803D;
+}
+.att-card-radio-present input[type="radio"]:checked + .att-card-radio-mark {
+  border-color: #16A34A;
+}
+.att-card-radio-present input[type="radio"]:checked + .att-card-radio-mark::after {
+  background: #16A34A;
+}
+
+/* Absent on mobile */
+.att-card-radio-absent:has(input[type="radio"]:checked) {
+  border-color: #DC2626;
+  background: #FEF2F2;
+  color: #991B1B;
+}
+.att-card-radio-absent input[type="radio"]:checked + .att-card-radio-mark {
+  border-color: #DC2626;
+}
+.att-card-radio-absent input[type="radio"]:checked + .att-card-radio-mark::after {
+  background: #DC2626;
+}
+
+.att-card-radio input[type="radio"]:focus-visible + .att-card-radio-mark {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   SAVE BAR
+------------------------------------------------------------ */
+.att-save-bar {
+  position: sticky;
+  bottom: 1rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.att-save-bar[hidden] { display: none; }
+
+.att-save-btn {
+  padding: .9rem 1.5rem;
+  font-size: .95rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.att-save-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.5);
+  border-top-color: #fff;
+  animation: attSpin .7s linear infinite;
+  margin-left: .5rem;
+}
+@keyframes attSpin { to { transform: rotate(360deg); } }
+
+#attSaveBtn.is-loading .att-save-label { opacity: .7; }
+#attSaveBtn.is-loading .att-save-spinner { display: inline-block; }
+#attSaveBtn.is-loading { pointer-events: none; }
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------------ */
+@media (max-width: 860px) {
+  .att-controls { grid-template-columns: 1fr; }
+  .att-summary { grid-template-columns: repeat(3, 1fr); }
+  .att-summary-value { font-size: 1.3rem; }
+
+  .att-table-wrap { display: none !important; }
+  .att-cards { display: block; }
+  .att-cards[hidden] { display: none; }
+}
+
+@media (max-width: 520px) {
+  .att-card { padding: 1.15rem 1.25rem; }
+  .att-summary-item { padding: .7rem .85rem; }
+  .att-summary-label { font-size: .62rem; letter-spacing: .08em; }
+  .att-summary-value { font-size: 1.1rem; }
+  .att-save-bar { justify-content: stretch; bottom: .5rem; }
+  .att-save-btn { width: 100%; }
+  .att-bulk { gap: .4rem; }
+  .att-bulk-btn { flex: 1; text-align: center; }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .att-save-spinner { animation: none; }
+  .att-radio-mark,
+  .att-radio-mark::after,
+  .att-card-radio,
+  .att-card-radio-mark,
+  .att-card-radio-mark::after,
+  .att-status-btn { transition: none; }
+}

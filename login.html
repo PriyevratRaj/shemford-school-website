@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="School Login — Shemford Futuristic School, Muzaffarpur. Sign in to access your dashboard." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>School Login — Shemford Futuristic School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body class="page-login">
+
+  <a class="skip-link" href="#loginMain">Skip to login form</a>
+
+  <!-- ============================================================
+       HEADER — identical structure to homepage.
+       Keeps brand and nav consistent so the login page feels part
+       of the same site, not a separate app.
+  ============================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html" aria-label="Shemford Futuristic School — Home">
+        <img
+          class="brand-logo"
+          src="assets/images/logo.png"
+          alt="Shemford Futuristic School logo"
+          width="44" height="44"
+        />
+        <span class="brand-text">
+          <span class="brand-name">Shemford Futuristic School</span>
+          <span class="brand-place">Muzaffarpur</span>
+        </span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="academics.html">Academics</a></li>
+          <li><a class="nav-link" href="facilities.html">Facilities</a></li>
+          <li><a class="nav-link" href="notices.html">Notices</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary nav-login is-active" href="login.html" aria-current="page">Login</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="loginMain" class="login-main">
+
+    <div class="container login-layout">
+
+      <!-- ============================================================
+           LEFT — editorial / brand column
+           Reassures visitors where they are and what the page does.
+           Intentionally contains no fake stats or claims.
+      ============================================================= -->
+      <aside class="login-intro" aria-labelledby="loginIntroTitle">
+        <p class="eyebrow">School Portal</p>
+        <h1 id="loginIntroTitle" class="login-intro-title">
+          Welcome back to<br />
+          <span class="accent">Shemford Futuristic School</span>
+        </h1>
+        <p class="login-intro-text">
+          Sign in with the Email address. Your dashboard
+          will be shown automatically based on your account type.
+        </p>
+
+        <ul class="login-points">
+          <li>
+            <span class="login-point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <span>One login for students, teachers and administrators</span>
+          </li>
+          <li>
+            <span class="login-point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <span>Credentials are issued and managed by the school office</span>
+          </li>
+          <li>
+            <span class="login-point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span>Access is controlled by your account status</span>
+          </li>
+        </ul>
+
+        <p class="login-intro-help">
+          Don&rsquo;t have a School Account? Contact the school office &mdash;
+          accounts are created by administrators only.
+        </p>
+      </aside>
+
+      <!-- ============================================================
+           RIGHT — login form
+           No role selector. The backend decides the role after
+           successful authentication and returns the correct
+           redirect target.
+      ============================================================= -->
+      <section class="login-card" aria-labelledby="loginCardTitle">
+
+        <header class="login-card-head">
+          <h2 id="loginCardTitle" class="login-card-title">School Login</h2>
+          <p class="login-card-sub">
+            Enter your Email address and password to continue.
+          </p>
+        </header>
+
+        <!--
+          The form has no action/method because submission is handled
+          via fetch() in login.js so we can render inline errors and
+          show a loading state. When the backend exists, login.js will
+          POST to /api/auth/login.
+        -->
+        <form
+          class="login-form"
+          id="loginForm"
+          novalidate
+          autocomplete="on"
+        >
+
+          <!-- General error / status message region -->
+          <div
+            class="form-alert"
+            id="formAlert"
+            role="alert"
+            aria-live="polite"
+            hidden
+          ></div>
+
+          <div class="form-field">
+  <label for="email">Email Address</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    autocomplete="username"
+    inputmode="email"
+    spellcheck="false"
+    autocapitalize="none"
+    required
+    aria-required="true"
+    aria-describedby="emailHelp"
+  />
+  <p class="form-help" id="emailHelp">
+    Enter the email address registered with your school account.
+  </p>
+</div>
+
+          <div class="form-field">
+            <label for="password">Password</label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="current-password"
+                required
+                aria-required="true"
+                aria-describedby="passwordHelp"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+                aria-label="Show password"
+                aria-pressed="false"
+              >
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+              </button>
+            </div>
+            <p class="form-help" id="passwordHelp">
+              Passwords are case-sensitive.
+            </p>
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" id="rememberMe" name="rememberMe" />
+              <span>Keep me signed in on this device</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">
+            <span class="btn-label">Login</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="login-footnote">
+            Forgot your password? Contact the school office to have it reset.
+          </p>
+
+        </form>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — minimal, consistent with site
+  ============================================================= -->
+  <footer class="site-footer site-footer-compact">
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year">2025</span> Shemford Futuristic School. All rights reserved.</p>
+      <p class="footer-meta">
+        <a href="index.html">Back to homepage</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="login.js" defer></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

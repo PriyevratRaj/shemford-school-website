@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Attendance — Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Attendance — Student Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="attendance.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD
+  ============================================================= -->
+  <div class="dash-guard" id="dashGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Checking your account...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="dashShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="dashMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="dashSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Student dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Student Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="dashNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="dashUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="dashUserName">Loading…</span>
+            <span class="dash-user-role">Student</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="dashLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Student navigation">
+      <nav class="dash-nav">
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="dashboard.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="homework.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Homework
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link is-active" href="attendance.html" aria-current="page">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M8 15l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Attendance
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="marks.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Marks
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="announcements.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Announcements
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="settings.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="dashBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- PAGE HEAD -->
+      <section class="att-page-head">
+        <a class="att-back" href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <h1 class="att-page-title">Attendance</h1>
+        <p class="att-page-sub">View your attendance record.</p>
+      </section>
+
+      <!-- ALERT -->
+      <div class="att-alert" id="attAlert" role="alert" hidden></div>
+
+      <!-- TOGGLE -->
+      <div class="att-view-toggle" role="tablist" aria-label="Attendance view">
+        <button type="button" class="att-toggle-btn is-active" id="viewMonthly" role="tab" aria-selected="true">
+          Monthly
+        </button>
+        <button type="button" class="att-toggle-btn" id="viewYearly" role="tab" aria-selected="false">
+          Yearly
+        </button>
+      </div>
+
+      <!-- LOADING -->
+      <div class="att-loading" id="attLoading">
+        <div class="dash-spinner" aria-hidden="true"></div>
+        <p>Loading attendance…</p>
+      </div>
+
+      <!-- EMPTY -->
+      <div class="att-empty" id="attEmpty" hidden>
+        <p class="att-empty-title">No attendance records yet</p>
+        <p class="att-empty-text">Your attendance has not been recorded yet.</p>
+      </div>
+
+      <!-- ============================================================
+           MONTHLY VIEW
+      ============================================================= -->
+      <section class="att-monthly" id="attMonthly" hidden aria-labelledby="attMonthlyTitle">
+
+        <!-- Month header -->
+        <div class="att-month-head">
+          <button
+            type="button"
+            class="att-nav-btn"
+            id="attPrevMonth"
+            aria-label="Previous month"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <h2 class="att-month-title" id="attMonthlyTitle">Month Year</h2>
+
+          <button
+            type="button"
+            class="att-nav-btn"
+            id="attNextMonth"
+            aria-label="Next month"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Summary cards -->
+        <div class="att-summary" id="attSummaryMonth" aria-label="Monthly summary">
+          <div class="att-summary-item">
+            <span class="att-summary-label">Present</span>
+            <span class="att-summary-value att-summary-present" id="sumMonthPresent">0</span>
+          </div>
+          <div class="att-summary-item">
+            <span class="att-summary-label">Absent</span>
+            <span class="att-summary-value att-summary-absent" id="sumMonthAbsent">0</span>
+          </div>
+          <div class="att-summary-item">
+            <span class="att-summary-label">Attendance</span>
+            <span class="att-summary-value" id="sumMonthPercent">0%</span>
+          </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="att-calendar">
+          <div class="att-calendar-weekdays" aria-hidden="true">
+            <span>Mon</span><span>Tue</span><span>Wed</span>
+            <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+          <div class="att-calendar-days" id="attCalendarDays" role="grid" aria-label="Monthly attendance calendar"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="att-legend" aria-label="Legend">
+          <span class="att-legend-item">
+            <span class="att-legend-dot att-legend-present" aria-hidden="true"></span>
+            Present
+          </span>
+          <span class="att-legend-item">
+            <span class="att-legend-dot att-legend-absent" aria-hidden="true"></span>
+            Absent
+          </span>
+          <span class="att-legend-item">
+            <span class="att-legend-dot att-legend-neutral" aria-hidden="true"></span>
+            Holiday / Not marked
+          </span>
+        </div>
+
+      </section>
+
+      <!-- ============================================================
+           YEARLY VIEW
+      ============================================================= -->
+      <section class="att-yearly" id="attYearly" hidden aria-labelledby="attYearlyTitle">
+
+        <!-- Year header -->
+        <div class="att-month-head">
+          <button
+            type="button"
+            class="att-nav-btn"
+            id="attPrevYear"
+            aria-label="Previous year"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <h2 class="att-month-title" id="attYearlyTitle">Year</h2>
+
+          <button
+            type="button"
+            class="att-nav-btn"
+            id="attNextYear"
+            aria-label="Next year"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Summary cards -->
+        <div class="att-summary" id="attSummaryYear" aria-label="Yearly summary">
+          <div class="att-summary-item">
+            <span class="att-summary-label">Present</span>
+            <span class="att-summary-value att-summary-present" id="sumYearPresent">0</span>
+          </div>
+          <div class="att-summary-item">
+            <span class="att-summary-label">Absent</span>
+            <span class="att-summary-value att-summary-absent" id="sumYearAbsent">0</span>
+          </div>
+          <div class="att-summary-item">
+            <span class="att-summary-label">Attendance</span>
+            <span class="att-summary-value" id="sumYearPercent">0%</span>
+          </div>
+        </div>
+
+        <!-- 12 mini calendars -->
+        <div class="att-yearly-grid" id="attYearlyGrid"></div>
+
+        <!-- Legend -->
+        <div class="att-legend" aria-label="Legend">
+          <span class="att-legend-item">
+            <span class="att-legend-dot att-legend-present" aria-hidden="true"></span>
+            Present
+          </span>
+          <span class="att-legend-item">
+            <span class="att-legend-dot att-legend-absent" aria-hidden="true"></span>
+            Absent
+          </span>
+          <span class="att-legend-item">
+            <span class="att-legend-dot att-legend-neutral" aria-hidden="true"></span>
+            Holiday / Not marked
+          </span>
+        </div>
+
+      </section>
+
+      <!-- DAY DETAIL PANEL (modal-ish, opens on click) -->
+      <div class="att-detail-backdrop" id="attDetailBackdrop" hidden></div>
+      <aside
+        class="att-detail"
+        id="attDetail"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="attDetailTitle"
+      >
+        <button
+          type="button"
+          class="att-detail-close"
+          id="attDetailClose"
+          aria-label="Close"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <h3 class="att-detail-title" id="attDetailTitle">Date</h3>
+        <p class="att-detail-status" id="attDetailStatus">Status</p>
+      </aside>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="attendance.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin Dashboard — Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Admin Dashboard — Shemford Futuristic School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD — shown while we verify session + admin role
+  ============================================================= -->
+  <div class="dash-guard" id="dashGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Checking your account...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="dashShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="dashMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="dashSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Admin dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Admin Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="dashNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="dashUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="dashUserName">Loading…</span>
+            <span class="dash-user-role">Admin</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="dashLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Admin navigation">
+      <nav class="dash-nav">
+
+        <!-- Single items -->
+        <ul>
+          <li>
+            <a class="dash-nav-link is-active" href="dashboard.html" aria-current="page">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+        </ul>
+
+        <!-- Students group -->
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle is-open"
+            data-target="navStudents"
+            aria-expanded="true"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.8-3 3-4.5 6-4.5s5.2 1.5 6 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="10" r="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M14 20c.5-2 1.8-3.2 3-3.2s2.5 1.2 3 3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Students
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <ul class="dash-nav-sublist" id="navStudents">
+            <li><a class="dash-nav-link" href="students.html">Student List</a></li>
+            <li><a class="dash-nav-link" href="add-student.html">Add Student</a></li>
+            <li><a class="dash-nav-link" href="manage-students.html">Manage Students</a></li>
+          </ul>
+        </div>
+
+        <!-- Teachers group -->
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle is-open"
+            data-target="navTeachers"
+            aria-expanded="true"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.5 4-5.5 7-5.5s5.8 2 7 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Teachers
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <ul class="dash-nav-sublist" id="navTeachers">
+            <li><a class="dash-nav-link" href="teachers.html">Teacher List</a></li>
+            <li><a class="dash-nav-link" href="add-teacher.html">Add Teacher</a></li>
+            <li><a class="dash-nav-link" href="manage-teachers.html">Manage Teachers</a></li>
+          </ul>
+        </div>
+
+        <!-- Schedules group -->
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle"
+            data-target="navSchedules"
+            aria-expanded="false"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            Schedules
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <ul class="dash-nav-sublist" id="navSchedules" hidden>
+            <li>
+              <a class="dash-nav-link" href="#" aria-disabled="true">
+                Student Schedule
+                <span class="dash-nav-badge">Soon</span>
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="#" aria-disabled="true">
+                Teacher Schedule
+                <span class="dash-nav-badge">Soon</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Teacher attendance (single item, disabled for now) -->
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M8 15l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Teacher Attendance
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Settings
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="dashBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- WELCOME -->
+      <section class="adm-welcome" aria-labelledby="admWelcomeTitle">
+        <h1 class="adm-welcome-title" id="admWelcomeTitle">
+          <span id="admGreeting">Welcome</span>, <span id="admAdminName">Admin</span> 👋
+        </h1>
+        <p class="adm-welcome-sub">
+          This is the school administration portal. Manage students, teachers, schedules and attendance from here.
+        </p>
+      </section>
+
+      <!-- ALERT -->
+      <div class="adm-alert" id="admAlert" role="alert" hidden></div>
+      
+      <!-- QUICK ACTIONS -->
+      <section class="adm-section" aria-labelledby="admActionsTitle">
+        <header class="adm-section-head">
+          <h2 class="adm-section-title" id="admActionsTitle">Quick Actions</h2>
+          <p class="adm-section-sub">Jump straight to common tasks.</p>
+        </header>
+
+        <div class="adm-action-grid">
+          <a class="adm-action" href="add-teacher.html">
+            <span class="adm-action-icon" aria-hidden="true">👨‍🏫</span>
+            <h3 class="adm-action-title">Add Teacher</h3>
+            <p class="adm-action-text">Create a new teacher account.</p>
+          </a>
+
+          <a class="adm-action" href="teachers.html">
+            <span class="adm-action-icon" aria-hidden="true">📋</span>
+            <h3 class="adm-action-title">Teacher List</h3>
+            <p class="adm-action-text">View all teachers on record.</p>
+          </a>
+
+          <a class="adm-action" href="students.html">
+            <span class="adm-action-icon" aria-hidden="true">👨‍🎓</span>
+            <h3 class="adm-action-title">Student List</h3>
+            <p class="adm-action-text">View all enrolled students.</p>
+          </a>
+
+          <a class="adm-action" href="#" aria-disabled="true">
+            <span class="adm-action-icon" aria-hidden="true">📅</span>
+            <h3 class="adm-action-title">Schedules</h3>
+            <p class="adm-action-text">Coming soon.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- INFO PANEL -->
+      <section class="adm-section" aria-labelledby="admInfoTitle">
+        <header class="adm-section-head">
+          <h2 class="adm-section-title" id="admInfoTitle">Administrator Notes</h2>
+        </header>
+        <div class="adm-panel">
+          <p class="adm-panel-text">
+            Statistics on this page are pulled live from the database. If a number shows
+            <strong>—</strong>, it means the table could not be read from your account —
+            this is usually a permissions (RLS) issue that we fix in a later step, not a
+            problem with the data itself.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

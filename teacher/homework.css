@@ -1,0 +1,368 @@
+/* ============================================================
+   TEACHER HOMEWORK — STYLES
+   Builds on teacher/dashboard.css and ../style.css.
+   ============================================================= */
+
+/* ------------------------------------------------------------
+   PAGE HEAD
+------------------------------------------------------------ */
+.hw-page-head {
+  margin-bottom: 1.75rem;
+}
+
+.hw-back {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-decoration: none;
+  margin-bottom: .75rem;
+}
+.hw-back:hover { color: var(--primary); }
+
+.hw-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 .35rem;
+  line-height: 1.2;
+}
+
+.hw-page-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   ALERT BANNER
+------------------------------------------------------------ */
+.hw-alert {
+  padding: .85rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: .92rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+}
+.hw-alert[hidden] { display: none; }
+.hw-alert.is-success {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #065F46;
+}
+.hw-alert.is-error {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #991B1B;
+}
+.hw-alert.is-info {
+  background: var(--primary-light);
+  border-color: var(--primary-tint);
+  color: var(--primary-dark);
+}
+
+/* ------------------------------------------------------------
+   CARD
+------------------------------------------------------------ */
+.hw-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.hw-card-head {
+  margin-bottom: 1.25rem;
+}
+.hw-card-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hw-card-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 .25rem;
+}
+
+.hw-card-sub {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 0;
+}
+
+.hw-count {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  padding: .35rem .7rem;
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------------
+   FORM
+------------------------------------------------------------ */
+.hw-form { display: block; }
+
+.hw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.hw-field { display: flex; flex-direction: column; gap: .4rem; }
+.hw-field-full { grid-column: 1 / -1; }
+
+.hw-field label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.hw-field input,
+.hw-field select,
+.hw-field textarea {
+  width: 100%;
+  padding: .7rem .85rem;
+  font: inherit;
+  font-size: .93rem;
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+
+.hw-field textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.55;
+  font-family: var(--font-body);
+}
+
+.hw-field input:hover,
+.hw-field select:hover,
+.hw-field textarea:hover { border-color: #B8BFCB; }
+
+.hw-field input:focus,
+.hw-field select:focus,
+.hw-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(249,115,22,.15);
+}
+
+.hw-field input[aria-invalid="true"],
+.hw-field select[aria-invalid="true"],
+.hw-field textarea[aria-invalid="true"] {
+  border-color: #DC2626;
+  box-shadow: 0 0 0 4px rgba(220,38,38,.12);
+}
+
+.hw-form-actions {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+/* Save button loading spinner */
+.hw-save-spinner {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.5);
+  border-top-color: #fff;
+  animation: hwSpin .7s linear infinite;
+  margin-left: .4rem;
+}
+@keyframes hwSpin { to { transform: rotate(360deg); } }
+
+#hwSaveBtn.is-loading .hw-save-label { opacity: .7; }
+#hwSaveBtn.is-loading .hw-save-spinner { display: inline-block; }
+#hwSaveBtn.is-loading { pointer-events: none; }
+
+/* ------------------------------------------------------------
+   LIST
+------------------------------------------------------------ */
+.hw-loading {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.25rem 0;
+  color: var(--muted);
+  font-size: .92rem;
+}
+.hw-loading .dash-spinner {
+  width: 22px;
+  height: 22px;
+  border-width: 2px;
+}
+
+.hw-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: var(--gray-50);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+}
+.hw-empty-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--dark);
+  margin: 0 0 .35rem;
+}
+.hw-empty-text {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 0;
+}
+
+.hw-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .85rem;
+}
+
+.hw-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+.hw-item:hover {
+  border-color: var(--primary-tint);
+  box-shadow: var(--shadow-sm);
+}
+
+.hw-item-main { min-width: 0; }
+
+.hw-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .5rem;
+}
+
+.hw-tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-tint);
+}
+.hw-tag-plain {
+  background: var(--gray-50);
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.hw-item-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 .35rem;
+  line-height: 1.3;
+}
+
+.hw-item-instructions {
+  color: var(--text);
+  font-size: .9rem;
+  line-height: 1.55;
+  margin: 0 0 .5rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hw-item-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: .8rem;
+  color: var(--muted);
+}
+.hw-item-dates span strong {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.hw-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: stretch;
+  min-width: 110px;
+}
+
+.hw-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .5rem .85rem;
+  border-radius: var(--radius-sm);
+  font-size: .82rem;
+  font-weight: 600;
+  border: 1px solid var(--border-strong);
+  background: var(--white);
+  color: var(--dark);
+  transition: background-color .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
+}
+.hw-btn:hover {
+  background: var(--gray-50);
+  border-color: var(--dark);
+}
+.hw-btn-edit:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  background: var(--primary-light);
+}
+.hw-btn-delete:hover {
+  border-color: #DC2626;
+  color: #991B1B;
+  background: #FEF2F2;
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------------ */
+@media (max-width: 768px) {
+  .hw-card { padding: 1.35rem; }
+  .hw-grid { grid-template-columns: 1fr; }
+  .hw-item { grid-template-columns: 1fr; }
+  .hw-item-actions {
+    flex-direction: row;
+    min-width: 0;
+  }
+  .hw-btn { flex: 1; }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .hw-save-spinner { animation: none; }
+  .hw-item { transition: none; }
+}

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teacher Homework — Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Homework — Teacher Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="homework.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD — shown while we verify session + role
+  ============================================================= -->
+  <div class="dash-guard" id="dashGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Loading homework…</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="dashShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="dashMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="dashSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Teacher dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Teacher Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="dashNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="dashUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="dashUserName">Loading…</span>
+            <span class="dash-user-role">Teacher</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="dashLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Teacher navigation">
+      <nav class="dash-nav">
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="dashboard.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link is-active" href="homework.html" aria-current="page">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              📚 Homework
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="attendance.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4M8 14l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Attendance
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="marks.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Marks
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="students.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.8-3 3-4.5 6-4.5s5.2 1.5 6 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="10" r="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M14 20c.5-2 1.8-3.2 3-3.2s2.5 1.2 3 3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Students
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="announcements.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Announcements
+            </a>
+          </li>
+          <li>
+            <a class="dash-nav-link" href="settings.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="dashBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- PAGE HEADER -->
+      <section class="hw-page-head">
+        <a class="hw-back" href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <h1 class="hw-page-title">Homework</h1>
+        <p class="hw-page-sub">
+          Create, edit and manage homework for your classes.
+        </p>
+      </section>
+
+      <!-- STATUS BANNER (success / error) -->
+      <div class="hw-alert" id="hwAlert" role="alert" hidden></div>
+
+      <!-- ============================================================
+           FORM CARD
+      ============================================================= -->
+      <section class="hw-card hw-form-card" aria-labelledby="hwFormTitle">
+        <header class="hw-card-head">
+          <h2 class="hw-card-title" id="hwFormTitle">Create Homework</h2>
+          <p class="hw-card-sub" id="hwFormSub">
+            Fill in the details and save. Students from the selected class will see it instantly.
+          </p>
+        </header>
+
+        <form class="hw-form" id="hwForm" novalidate>
+
+          <div class="hw-grid">
+            <div class="hw-field">
+              <label for="hwClass">Class / Section</label>
+              <select id="hwClass" name="class_section" required>
+                <option value="">Select class/section</option>
+                 <option value="1-A">1-A</option>
+  <option value="1-B">1-B</option>
+  <option value="1-C">1-C</option>
+
+  <option value="2-A">2-A</option>
+  <option value="2-B">2-B</option>
+  <option value="2-C">2-C</option>
+
+  <option value="3-A">3-A</option>
+  <option value="3-B">3-B</option>
+  <option value="3-C">3-C</option>
+
+  <option value="4-A">4-A</option>
+  <option value="4-B">4-B</option>
+  <option value="4-C">4-C</option>
+
+  <option value="5-A">5-A</option>
+  <option value="5-B">5-B</option>
+  <option value="5-C">5-C</option>
+
+  <option value="6-A">6-A</option>
+  <option value="6-B">6-B</option>
+  <option value="6-C">6-C</option>
+
+  <option value="7-A">7-A</option>
+  <option value="7-B">7-B</option>
+  <option value="7-C">7-C</option>
+
+  <option value="8-A">8-A</option>
+  <option value="8-B">8-B</option>
+  <option value="8-C">8-C</option>
+
+  <option value="9-A">9-A</option>
+  <option value="9-B">9-B</option>
+  <option value="9-C">9-C</option>
+
+  <option value="10-A">10-A</option>
+  <option value="10-B">10-B</option>
+  <option value="10-C">10-C</option>
+              </select>
+            </div>
+
+            <div class="hw-field">
+              <label for="hwSubject">Subject</label>
+              <select id="hwSubject" name="subject" required>
+                <option value="">Select subject</option>
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="Social Science">Social Science</option>
+                <option value="Sanskrit">Sanskrit</option>
+                <option value="Computer / IT">Computer / IT</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="hw-field hw-field-full">
+              <label for="hwTitle">Homework Title</label>
+              <input
+                type="text"
+                id="hwTitle"
+                name="title"
+                maxlength="150"
+                placeholder="e.g. Chapter 5 — Exercise 5.2"
+                required
+              />
+            </div>
+
+            <div class="hw-field hw-field-full">
+              <label for="hwInstructions">Instructions</label>
+              <textarea
+                id="hwInstructions"
+                name="instructions"
+                rows="5"
+                maxlength="2000"
+                placeholder="Write the homework details students need to complete."
+              ></textarea>
+            </div>
+
+            <div class="hw-field">
+              <label for="hwAssigned">Assigned Date</label>
+              <input type="date" id="hwAssigned" name="assigned_date" required />
+            </div>
+
+            <div class="hw-field">
+              <label for="hwDue">Due Date</label>
+              <input type="date" id="hwDue" name="due_date" required />
+            </div>
+          </div>
+
+          <div class="hw-form-actions">
+            <button type="submit" class="btn btn-primary" id="hwSaveBtn">
+              <span class="hw-save-label">Save Homework</span>
+              <span class="hw-save-spinner" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-outline" id="hwCancelBtn" hidden>
+              Cancel
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- ============================================================
+           LIST
+      ============================================================= -->
+      <section class="hw-card" aria-labelledby="hwListTitle">
+        <header class="hw-card-head hw-card-head-row">
+          <div>
+            <h2 class="hw-card-title" id="hwListTitle">Your Homework</h2>
+            <p class="hw-card-sub">Homework you have created for your classes.</p>
+          </div>
+          <span class="hw-count" id="hwCount" aria-live="polite"></span>
+        </header>
+
+        <!-- Loading -->
+        <div class="hw-loading" id="hwLoading">
+          <div class="dash-spinner" aria-hidden="true"></div>
+          <p>Loading homework…</p>
+        </div>
+
+        <!-- Empty state -->
+        <div class="hw-empty" id="hwEmpty" hidden>
+          <p class="hw-empty-title">No homework yet</p>
+          <p class="hw-empty-text">
+            Homework you create will appear here. Use the form above to add your first assignment.
+          </p>
+        </div>
+
+        <!-- List -->
+        <div class="hw-list" id="hwList" hidden></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="homework.js"></script>
+</body>
+</html>

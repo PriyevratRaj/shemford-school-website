@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teacher Dashboard — Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+
+  <title>Teacher Dashboard — Shemford Futuristic School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body class="dash-body">
+
+  <!-- AUTH GUARD -->
+
+  <div class="dash-guard" id="dashGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Loading your dashboard…</p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+
+  <div class="dash-shell" id="dashShell" hidden>
+
+```
+<!-- HEADER -->
+<header class="dash-header">
+
+  <div class="dash-header-left">
+
+    <button
+      class="dash-menu-btn"
+      id="dashMenuBtn"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="dashSidebar"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a class="dash-brand" href="dashboard.html" aria-label="Teacher dashboard home">
+
+      <img
+        src="../assets/images/logo.png"
+        alt="Shemford Futuristic School logo"
+        width="40"
+        height="40"
+        class="dash-brand-logo"
+      />
+
+      <span class="dash-brand-text">
+        <span class="dash-brand-name">Shemford Futuristic School</span>
+        <span class="dash-brand-sub">Teacher Portal</span>
+      </span>
+
+    </a>
+
+  </div>
+
+  <div class="dash-header-right">
+
+    <!-- Notifications -->
+    <button
+      class="dash-icon-btn"
+      id="dashNotificationsBtn"
+      type="button"
+      aria-label="Notifications"
+    >
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M10 18a2 2 0 004 0"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <span class="dash-icon-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Teacher -->
+    <div class="dash-user">
+
+      <span
+        class="dash-user-avatar"
+        id="dashUserInitial"
+        aria-hidden="true"
+      >–</span>
+
+      <span class="dash-user-meta">
+
+        <span
+          class="dash-user-name"
+          id="dashUserName"
+        >Loading…</span>
+
+        <span class="dash-user-role">
+          Teacher
+        </span>
+
+      </span>
+
+    </div>
+
+    <!-- Logout -->
+    <button
+      class="dash-logout"
+      id="dashLogout"
+      type="button"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+        width="16"
+        height="16"
+      >
+        <path
+          d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <span class="dash-logout-label">
+        Logout
+      </span>
+    </button>
+
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<aside
+  class="dash-sidebar"
+  id="dashSidebar"
+  aria-label="Teacher dashboard navigation"
+>
+
+  <nav class="dash-nav">
+
+    <ul>
+
+      <li>
+        <a
+          class="dash-nav-link is-active"
+          href="dashboard.html"
+        >
+          <span class="dash-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M3 11l9-8 9 8"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5 10v10h14V10"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Dashboard
+        </a>
+      </li>
+
+      <li>
+        <a
+          class="dash-nav-link"
+          href="homework.html"
+        >
+          <span class="dash-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 3h9l3 3v15H6V3z"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 3v4h4"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9 11h6M9 15h6"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          Homework
+        </a>
+<li>
+  <a
+    class="dash-nav-link"
+    href="attendance.html"
+  >
+    <span class="dash-nav-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M7 3v4M17 3v4M4 9h16"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+        <rect
+          x="4"
+          y="5"
+          width="16"
+          height="16"
+          rx="2"
+          stroke="currentColor"
+          stroke-width="1.6"
+        />
+        <path
+          d="M8 13h2M14 13h2M8 17h2M14 17h2"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      </svg>
+    </span>
+    Attendance
+  </a>
+</li>
+          My Classes
+          <span class="dash-soon">Soon</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          class="dash-nav-link dash-disabled"
+          href="#"
+          aria-disabled="true"
+        >
+          <span class="dash-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="12"
+                cy="8"
+                r="3"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M5 20c1.2-3.5 3.5-5 7-5s5.8 1.5 7 5"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          Students
+          <span class="dash-soon">Soon</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          class="dash-nav-link dash-disabled"
+          href="#"
+          aria-disabled="true"
+        >
+          <span class="dash-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 5h16v12H7l-3 3V5z"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Announcements
+          <span class="dash-soon">Soon</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          class="dash-nav-link dash-disabled"
+          href="#"
+          aria-disabled="true"
+        >
+          <span class="dash-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="12"
+                cy="12"
+                r="3"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a2 2 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Settings
+          <span class="dash-soon">Soon</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+</aside>
+
+<!-- MOBILE BACKDROP -->
+<div
+  class="dash-backdrop"
+  id="dashBackdrop"
+  hidden
+></div>
+
+<!-- MAIN -->
+<main class="dash-main">
+
+  <!-- WELCOME -->
+  <section
+    class="dash-welcome"
+    aria-labelledby="welcomeTitle"
+  >
+
+    <h1
+      class="dash-welcome-title"
+      id="welcomeTitle"
+    >
+      <span id="greeting">Good Evening</span>,
+      <span id="welcomeName">Teacher</span> 👋
+    </h1>
+
+    <p class="dash-welcome-sub">
+      Welcome back to your teacher portal.
+    </p>
+
+    <dl class="dash-meta">
+
+      <div class="dash-meta-item">
+        <dt>School ID</dt>
+        <dd id="factSchoolId">–</dd>
+      </div>
+
+      <div class="dash-meta-item">
+        <dt>Status</dt>
+        <dd>
+          <span
+            class="dash-status"
+            id="factStatus"
+          >–</span>
+        </dd>
+      </div>
+
+      <div class="dash-meta-item">
+        <dt>Role</dt>
+        <dd>Teacher</dd>
+      </div>
+
+    </dl>
+
+  </section>
+
+  <!-- PROFILE CARD -->
+  <section
+    class="dash-profile-card"
+    aria-labelledby="profileCardTitle"
+  >
+
+    <div class="dash-profile-left">
+
+      <span
+        class="dash-profile-avatar"
+        id="profileAvatar"
+        aria-hidden="true"
+      >–</span>
+
+      <div class="dash-profile-meta">
+
+        <h2
+          class="dash-profile-name"
+          id="profileName"
+        >Loading…</h2>
+
+        <p class="dash-profile-role">
+          Teacher
+          <span
+            class="dash-profile-dot"
+            aria-hidden="true"
+          >•</span>
+          Shemford Futuristic School
+        </p>
+
+      </div>
+
+    </div>
+
+    <dl class="dash-profile-facts">
+
+      <div class="dash-profile-fact">
+        <dt>School ID</dt>
+        <dd id="profileSchoolId">–</dd>
+      </div>
+
+      <div class="dash-profile-fact">
+        <dt>Status</dt>
+        <dd>
+          <span
+            class="dash-status"
+            id="profileStatus"
+          >–</span>
+        </dd>
+      </div>
+
+    </dl>
+
+    <span class="dash-profile-cta dash-profile-cta-disabled">
+      Teacher Profile
+    </span>
+
+  </section>
+
+  <!-- FEATURES -->
+  <section
+    class="dash-section"
+    aria-labelledby="featuresTitle"
+  >
+
+    <header class="dash-section-head">
+
+      <h2
+        class="dash-section-title"
+        id="featuresTitle"
+      >
+        Teacher Tools
+      </h2>
+
+      <p class="dash-section-sub">
+        Manage your classroom work from one place.
+      </p>
+
+    </header>
+
+    <div class="dash-feature-grid">
+
+      <!-- HOMEWORK -->
+      <a
+        class="dash-feature"
+        href="homework.html"
+      >
+        <span
+          class="dash-feature-icon"
+          aria-hidden="true"
+        >📚</span>
+
+        <h3 class="dash-feature-title">
+          Homework
+        </h3>
+
+        <p class="dash-feature-text">
+          Create, publish and manage homework for your classes.
+        </p>
+
+        <span class="dash-feature-cta">
+          Open
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </a>
+
+      <!-- MY CLASSES -->
+      <div class="dash-feature dash-feature-disabled">
+        <span
+          class="dash-feature-icon"
+          aria-hidden="true"
+        >🏫</span>
+
+        <h3 class="dash-feature-title">
+          My Classes
+        </h3>
+
+        <p class="dash-feature-text">
+          View the classes and sections assigned to you.
+        </p>
+
+        <span class="dash-feature-cta">
+          Coming Soon
+        </span>
+      </div>
+
+      <!-- STUDENTS -->
+      <div class="dash-feature dash-feature-disabled">
+        <span
+          class="dash-feature-icon"
+          aria-hidden="true"
+        >👥</span>
+
+        <h3 class="dash-feature-title">
+          Students
+        </h3>
+
+        <p class="dash-feature-text">
+          View students and their classroom information.
+        </p>
+
+        <span class="dash-feature-cta">
+          Coming Soon
+        </span>
+      </div>
+
+      <!-- ANNOUNCEMENTS -->
+      <div class="dash-feature dash-feature-disabled">
+        <span
+          class="dash-feature-icon"
+          aria-hidden="true"
+        >📢</span>
+
+        <h3 class="dash-feature-title">
+          Announcements
+        </h3>
+
+        <p class="dash-feature-text">
+          Share important announcements with students.
+        </p>
+
+        <span class="dash-feature-cta">
+          Coming Soon
+        </span>
+      </div>
+
+      <!-- ATTENDANCE -->
+      <a
+      class="dash-feature"
+      href="attendance.html"
+      >
+        <span
+          class="dash-feature-icon"
+          aria-hidden="true"
+        >📊</span>
+
+        <h3 class="dash-feature-title">
+        Attendance
+        </h3>
+
+        <p class="dash-feature-text">
+          Record and review student attendance.
+        </p>
+
+        <span class="dash-feature-cta">
+          Open
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            a ria-hidden="true">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </a>
+      <!-- SETTINGS -->
+      <div class="dash-feature dash-feature-disabled">
+        <span
+          class="dash-feature-icon"
+          aria-hidden="true"
+        >⚙️</span>
+
+        <h3 class="dash-feature-title">
+          Settings
+        </h3>
+
+        <p class="dash-feature-text">
+          Manage your teacher account preferences.
+        </p>
+
+        <span class="dash-feature-cta">
+          Coming Soon
+        </span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- OVERVIEW -->
+  <section
+    class="dash-section"
+    aria-labelledby="overviewTitle"
+  >
+
+    <header class="dash-section-head">
+
+      <h2
+        class="dash-section-title"
+        id="overviewTitle"
+      >
+        Overview
+      </h2>
+
+      <p class="dash-section-sub">
+        A quick look at your teacher portal.
+      </p>
+
+    </header>
+
+    <div class="dash-overview-grid">
+
+      <article class="dash-overview-card">
+        <span
+          class="dash-overview-icon"
+          aria-hidden="true"
+        >📚</span>
+
+        <div class="dash-overview-body">
+
+          <h3>
+            Homework
+          </h3>
+
+          <p class="dash-overview-empty">
+            Manage homework from the Homework section.
+          </p>
+
+        </div>
+      </article>
+
+      <article class="dash-overview-card">
+        <span
+          class="dash-overview-icon"
+          aria-hidden="true"
+        >🏫</span>
+
+        <div class="dash-overview-body">
+
+          <h3>
+            Classes
+          </h3>
+
+          <p class="dash-overview-empty">
+            Class management will appear here.
+          </p>
+
+        </div>
+      </article>
+
+      <article class="dash-overview-card">
+        <span
+          class="dash-overview-icon"
+          aria-hidden="true"
+        >👥</span>
+
+        <div class="dash-overview-body">
+
+          <h3>
+            Students
+          </h3>
+
+          <p class="dash-overview-empty">
+            Student information will appear here.
+          </p>
+
+        </div>
+      </article>
+
+      <article class="dash-overview-card">
+        <span
+          class="dash-overview-icon"
+          aria-hidden="true"
+        >📢</span>
+
+        <div class="dash-overview-body">
+
+          <h3>
+            Announcements
+          </h3>
+
+          <p class="dash-overview-empty">
+            No announcements yet.
+          </p>
+
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+</main>
+```
+
+  </div>
+
+  <!-- SCRIPTS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="../supabase-config.js"></script>
+
+  <script src="dashboard.js"></script>
+
+</body>
+</html>
