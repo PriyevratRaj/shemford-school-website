@@ -224,7 +224,7 @@
          }
 
          window.location.replace(
-           '/student/dashboard.html'
+           'student/dashboard.html'
          );
 
          return;
@@ -268,7 +268,7 @@
          }
 
          window.location.replace(
-           '/teacher/dashboard.html'
+           'teacher/dashboard.html'
          );
 
          return;
@@ -312,7 +312,7 @@
          }
 
          window.location.replace(
-           '/admin/dashboard.html'
+           'admin/dashboard.html'
          );
 
          return;
