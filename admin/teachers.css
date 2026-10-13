@@ -1,0 +1,1134 @@
+/* ============================================================
+   TEACHER LIST — STYLES
+   Every selector is scoped under body.teachers-page.
+   The layout uses defensive !important overrides for the
+   critical properties (display, position, width, grid) so
+   that dashboard.css cannot break the two-column shell.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. LOCAL TOKENS + PAGE BASE
+------------------------------------------------------------ */
+body.teachers-page {
+  --teacher-orange:        #F97316;
+  --teacher-orange-dark:   #EA580C;
+  --teacher-orange-soft:   #FFF7ED;
+  --teacher-orange-tint:   #FFF0E3;
+
+  --teacher-ink:           #111827;
+  --teacher-text:          #374151;
+  --teacher-muted:         #6B7280;
+  --teacher-subtle:        #9CA3AF;
+
+  --teacher-bg:            #F9FAFB;
+  --teacher-surface:       #FFFFFF;
+  --teacher-surface-alt:   #F9FAFB;
+  --teacher-border:        #E5E7EB;
+  --teacher-border-strong: #D1D5DB;
+
+  --teacher-radius-sm:     8px;
+  --teacher-radius:        10px;
+  --teacher-radius-lg:     14px;
+
+  --teacher-shadow-sm:     0 1px 2px rgb(15 23 42 / 5%);
+  --teacher-shadow:        0 1px 3px rgb(15 23 42 / 6%), 0 1px 2px rgb(15 23 42 / 4%);
+  --teacher-shadow-md:     0 4px 12px rgb(15 23 42 / 6%);
+
+  margin: 0;
+  padding: 0;
+  background: var(--teacher-bg);
+  color: var(--teacher-text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.teachers-page *,
+body.teachers-page *::before,
+body.teachers-page *::after {
+  box-sizing: border-box;
+}
+
+body.teachers-page [hidden] {
+  display: none !important;
+}
+
+body.teachers-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.teachers-page button {
+  font-family: inherit;
+}
+
+body.teachers-page :focus-visible {
+  outline: 2px solid var(--teacher-orange);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------
+   2. HEADER — sticky at the top, above the grid
+------------------------------------------------------------ */
+body.teachers-page .teachers-header {
+  position: relative;
+  z-index: 200;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 68px;
+  padding: 12px clamp(16px, 3vw, 32px);
+  background: var(--teacher-surface);
+  border-bottom: 1px solid var(--teacher-border);
+}
+
+body.teachers-page .teachers-brand {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+body.teachers-page .teachers-brand img {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  object-fit: contain;
+  border-radius: 9px;
+  background: var(--teacher-orange-soft);
+  padding: 4px;
+}
+
+body.teachers-page .teachers-brand span {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+body.teachers-page .teachers-brand strong {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teacher-ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.teachers-page .teachers-brand small {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--teacher-muted);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.teachers-page .back-dashboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-surface);
+  color: var(--teacher-text);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+body.teachers-page .back-dashboard:hover {
+  background: var(--teacher-orange-soft);
+  border-color: var(--teacher-orange);
+  color: var(--teacher-orange-dark);
+}
+
+body.teachers-page .sidebar-menu-button {
+  display: none;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-surface);
+  color: var(--teacher-ink);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+body.teachers-page .sidebar-menu-button:hover {
+  background: var(--teacher-orange-soft);
+  border-color: var(--teacher-orange);
+  color: var(--teacher-orange-dark);
+}
+
+/* ============================================================
+   3. PAGE LAYOUT — the two-column shell.
+   This block is the critical fix. It overrides any conflicting
+   rule in dashboard.css using !important, and it explicitly
+   declares the sidebar in column 1 and main content in
+   column 2 using grid-template-areas so that no stray child
+   (like the backdrop) can shift the layout.
+   ============================================================ */
+body.teachers-page .teachers-layout {
+  display: grid !important;
+  grid-template-columns: 248px minmax(0, 1fr) !important;
+  grid-template-areas: "sidebar main" !important;
+  align-items: start !important;
+  column-gap: 0 !important;
+  row-gap: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  float: none !important;
+  min-height: calc(100vh - 68px);
+}
+
+/* ------------------------------------------------------------
+   4. SIDEBAR — column 1, left side, sticky
+------------------------------------------------------------ */
+body.teachers-page .teachers-layout .dash-sidebar {
+  grid-area: sidebar !important;
+  position: sticky !important;
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  align-self: start !important;
+  width: 248px !important;
+  max-width: 248px !important;
+  height: calc(100vh - 68px) !important;
+  margin: 0 !important;
+  padding: 16px 12px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background: var(--teacher-surface) !important;
+  border-right: 1px solid var(--teacher-border) !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  float: none !important;
+  transform: none;
+  visibility: visible;
+  z-index: 100;
+}
+
+body.teachers-page .teachers-layout .dash-nav {
+  display: flex !important;
+  flex-direction: column;
+  gap: 4px;
+}
+
+body.teachers-page .teachers-layout .dash-nav ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.teachers-page .teachers-layout .dash-nav-group {
+  margin-top: 4px;
+}
+
+body.teachers-page .teachers-layout .dash-nav li {
+  margin: 2px 0;
+}
+
+body.teachers-page .teachers-layout .dash-nav-link,
+body.teachers-page .teachers-layout .dash-nav-group-toggle {
+  width: 100%;
+  min-height: 40px;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: var(--teacher-radius-sm);
+  background: transparent;
+  color: var(--teacher-text);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+body.teachers-page .teachers-layout .dash-nav-group-toggle {
+  justify-content: flex-start;
+}
+
+body.teachers-page .teachers-layout .dash-nav-link:hover,
+body.teachers-page .teachers-layout .dash-nav-group-toggle:hover {
+  background: var(--teacher-orange-soft);
+  color: var(--teacher-orange-dark);
+}
+
+body.teachers-page .teachers-layout .dash-nav-link.is-active {
+  background: var(--teacher-orange-tint);
+  color: #C2410C;
+  font-weight: 600;
+}
+
+body.teachers-page .teachers-layout .dash-nav-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+body.teachers-page .teachers-layout .dash-nav-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+body.teachers-page .teachers-layout .dash-nav-caret {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teacher-muted);
+  transition: transform 0.18s ease;
+}
+
+body.teachers-page .teachers-layout .dash-nav-caret svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+body.teachers-page .teachers-layout .dash-nav-group-toggle.is-open .dash-nav-caret {
+  transform: rotate(180deg);
+}
+
+body.teachers-page .teachers-layout .dash-nav-sublist {
+  list-style: none !important;
+  margin: 2px 0 6px 26px !important;
+  padding: 0 0 0 12px !important;
+  border-left: 1px solid var(--teacher-border);
+}
+
+body.teachers-page .teachers-layout .dash-nav-sublist .dash-nav-link {
+  min-height: 34px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  color: var(--teacher-muted);
+}
+
+body.teachers-page .teachers-layout .dash-nav-sublist .dash-nav-link:hover {
+  color: var(--teacher-orange-dark);
+}
+
+body.teachers-page .teachers-layout .dash-nav-badge {
+  margin-left: auto;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--teacher-bg);
+  color: var(--teacher-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Backdrop — never a grid item, never visible on desktop */
+body.teachers-page .teachers-layout .dash-backdrop {
+  display: none !important;
+  grid-area: unset !important;
+}
+
+/* ------------------------------------------------------------
+   5. MAIN CONTENT — column 2, right side
+------------------------------------------------------------ */
+body.teachers-page .teachers-main {
+  grid-area: main !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 28px clamp(16px, 3vw, 36px) 48px !important;
+  float: none !important;
+  position: relative !important;
+  order: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   6. PAGE HEADING
+------------------------------------------------------------ */
+body.teachers-page .directory-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+body.teachers-page .directory-heading > div {
+  min-width: 0;
+  flex: 1 1 320px;
+}
+
+body.teachers-page .eyebrow {
+  margin: 0 0 6px;
+  color: var(--teacher-orange-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body.teachers-page .directory-heading h1 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--teacher-ink);
+}
+
+body.teachers-page .directory-description {
+  margin: 8px 0 0;
+  max-width: 62ch;
+  color: var(--teacher-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+body.teachers-page .add-teacher-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-orange);
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--teacher-shadow-sm);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.teachers-page .add-teacher-button:hover {
+  background: var(--teacher-orange-dark);
+  box-shadow: var(--teacher-shadow);
+}
+
+body.teachers-page .add-teacher-button[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+body.teachers-page .add-teacher-button[aria-disabled="true"]:hover {
+  background: var(--teacher-orange);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------
+   7. ALERT
+------------------------------------------------------------ */
+body.teachers-page .directory-alert {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid #FECACA;
+  border-radius: var(--teacher-radius);
+  background: #FEF2F2;
+  color: #991B1B;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* ------------------------------------------------------------
+   8. STATISTICS CARDS
+------------------------------------------------------------ */
+body.teachers-page .directory-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+body.teachers-page .stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  background: var(--teacher-surface);
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-lg);
+  box-shadow: var(--teacher-shadow-sm);
+}
+
+body.teachers-page .stat-card span {
+  color: var(--teacher-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+body.teachers-page .stat-card strong {
+  color: var(--teacher-ink);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* ------------------------------------------------------------
+   9. PANEL
+------------------------------------------------------------ */
+body.teachers-page .directory-panel {
+  background: var(--teacher-surface);
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-lg);
+  box-shadow: var(--teacher-shadow-sm);
+  overflow: hidden;
+}
+
+body.teachers-page .panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--teacher-border);
+  flex-wrap: wrap;
+}
+
+body.teachers-page .panel-heading h2 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--teacher-ink);
+}
+
+body.teachers-page .panel-heading p {
+  margin: 4px 0 0;
+  color: var(--teacher-muted);
+  font-size: 12.5px;
+}
+
+body.teachers-page .refresh-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-surface);
+  color: var(--teacher-text);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+body.teachers-page .refresh-button:hover:not(:disabled) {
+  background: var(--teacher-orange-soft);
+  border-color: var(--teacher-orange);
+  color: var(--teacher-orange-dark);
+}
+
+body.teachers-page .refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------
+   10. FILTERS
+------------------------------------------------------------ */
+body.teachers-page .directory-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 16px 22px;
+  background: var(--teacher-surface-alt);
+  border-bottom: 1px solid var(--teacher-border);
+}
+
+body.teachers-page .directory-filters label {
+  display: grid;
+  gap: 6px;
+  color: var(--teacher-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+body.teachers-page .directory-filters input,
+body.teachers-page .directory-filters select {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--teacher-border-strong);
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-surface);
+  color: var(--teacher-ink);
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.teachers-page .directory-filters input::placeholder {
+  color: var(--teacher-subtle);
+}
+
+body.teachers-page .directory-filters input:hover,
+body.teachers-page .directory-filters select:hover {
+  border-color: #B8BFCB;
+}
+
+body.teachers-page .directory-filters input:focus,
+body.teachers-page .directory-filters select:focus {
+  border-color: var(--teacher-orange);
+  box-shadow: 0 0 0 3px rgb(249 115 22 / 15%);
+}
+
+/* ------------------------------------------------------------
+   11. TABLE
+------------------------------------------------------------ */
+body.teachers-page .directory-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.teachers-page .student-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+body.teachers-page .student-table thead th {
+  padding: 11px 20px;
+  background: var(--teacher-surface-alt);
+  border-bottom: 1px solid var(--teacher-border);
+  color: var(--teacher-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body.teachers-page .student-table tbody td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 13.5px;
+  color: var(--teacher-text);
+  vertical-align: middle;
+}
+
+body.teachers-page .student-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+body.teachers-page .student-table tbody tr {
+  transition: background 0.12s ease;
+}
+
+body.teachers-page .student-table tbody tr:hover {
+  background: #FFFBEB;
+}
+
+body.teachers-page .student-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+
+body.teachers-page .student-avatar {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--teacher-orange-tint);
+  color: var(--teacher-orange-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+body.teachers-page .student-name-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+body.teachers-page .student-name-text strong {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--teacher-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.teachers-page .student-name-text small {
+  color: var(--teacher-muted);
+  font-size: 11.5px;
+}
+
+body.teachers-page .status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--teacher-bg);
+  color: var(--teacher-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+body.teachers-page .status-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.75;
+}
+
+body.teachers-page .status-pill.active {
+  background: #ECFDF5;
+  color: #047857;
+}
+
+body.teachers-page .status-pill.inactive {
+  background: #FEF2F2;
+  color: #B91C1C;
+}
+
+body.teachers-page .view-student-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-surface);
+  color: var(--teacher-text);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+body.teachers-page .view-student-button:hover {
+  background: var(--teacher-orange-soft);
+  border-color: var(--teacher-orange);
+  color: var(--teacher-orange-dark);
+}
+
+/* ------------------------------------------------------------
+   12. LOADING / EMPTY STATES
+------------------------------------------------------------ */
+body.teachers-page .directory-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 220px;
+  padding: 40px 24px;
+  color: var(--teacher-muted);
+}
+
+body.teachers-page .directory-message h3 {
+  margin: 12px 0 6px;
+  color: var(--teacher-ink);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+body.teachers-page .directory-message p {
+  margin: 0;
+  font-size: 13px;
+  max-width: 42ch;
+}
+
+body.teachers-page .empty-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+body.teachers-page .loading-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--teacher-orange-tint);
+  border-top-color: var(--teacher-orange);
+  border-radius: 50%;
+  animation: teacher-spin 0.8s linear infinite;
+}
+
+@keyframes teacher-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ------------------------------------------------------------
+   13. PRIVACY NOTE
+------------------------------------------------------------ */
+body.teachers-page .privacy-note {
+  margin: 18px 2px 0;
+  color: var(--teacher-subtle);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   14. TEACHER DETAILS DIALOG
+------------------------------------------------------------ */
+body.teachers-page .student-dialog {
+  width: min(640px, calc(100% - 32px));
+  max-height: 88vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--teacher-radius-lg);
+  background: var(--teacher-surface);
+  color: var(--teacher-text);
+  box-shadow: 0 25px 60px rgb(15 23 42 / 25%);
+  overflow: hidden;
+}
+
+body.teachers-page .student-dialog::backdrop {
+  background: rgb(15 23 42 / 55%);
+  backdrop-filter: blur(2px);
+}
+
+body.teachers-page .dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--teacher-border);
+}
+
+body.teachers-page .dialog-header h2 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--teacher-ink);
+}
+
+body.teachers-page .close-dialog {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius-sm);
+  background: var(--teacher-surface);
+  color: var(--teacher-muted);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+body.teachers-page .close-dialog:hover {
+  background: var(--teacher-bg);
+  border-color: var(--teacher-border-strong);
+  color: var(--teacher-ink);
+}
+
+body.teachers-page #teacherDetailContent {
+  padding: 22px 24px 26px;
+  overflow-y: auto;
+  max-height: calc(88vh - 76px);
+}
+
+body.teachers-page .student-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body.teachers-page .detail-item {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--teacher-bg);
+  border: 1px solid var(--teacher-border);
+  border-radius: var(--teacher-radius);
+  overflow-wrap: anywhere;
+}
+
+body.teachers-page .detail-item span {
+  color: var(--teacher-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+body.teachers-page .detail-item strong {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--teacher-ink);
+  overflow-wrap: anywhere;
+}
+
+/* ============================================================
+   15. RESPONSIVE — TABLET
+   Sidebar becomes a full-height drawer that overlays the
+   header. No assumed header height. The drawer is
+   position:fixed and starts at top:0 of the viewport.
+   ============================================================ */
+@media (max-width: 900px) {
+  body.teachers-page .teachers-header {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  body.teachers-page .teachers-brand {
+    flex: 1;
+    min-width: 0;
+  }
+
+  body.teachers-page .sidebar-menu-button {
+    display: inline-flex;
+  }
+
+  body.teachers-page .teachers-layout {
+    display: block !important;
+    min-height: 0 !important;
+  }
+
+  body.teachers-page .teachers-layout .dash-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: auto !important;
+    width: min(280px, 82vw) !important;
+    max-width: 280px !important;
+    height: 100vh !important;
+    padding: 80px 14px 20px !important;
+    overflow-y: auto !important;
+    background: var(--teacher-surface) !important;
+    border-right: 1px solid var(--teacher-border) !important;
+    transform: translateX(-105%);
+    visibility: hidden;
+    box-shadow: none;
+    transition: transform 0.22s ease, visibility 0.22s ease, box-shadow 0.22s ease;
+    z-index: 130;
+  }
+
+  body.teachers-page .teachers-layout .dash-sidebar.is-visible {
+    transform: translateX(0);
+    visibility: visible;
+    box-shadow: 12px 0 30px rgb(15 23 42 / 15%);
+  }
+
+  body.teachers-page .teachers-layout .dash-backdrop:not([hidden]) {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 120;
+    background: rgb(15 23 42 / 45%);
+    grid-area: unset !important;
+  }
+
+  body.teachers-page .teachers-main {
+    padding: 22px 18px 40px !important;
+  }
+
+  body.teachers-page .directory-filters {
+    grid-template-columns: 1fr;
+    padding: 14px 18px;
+  }
+
+  body.teachers-page .student-table thead th,
+  body.teachers-page .student-table tbody td {
+    padding: 12px 16px;
+  }
+}
+
+/* ------------------------------------------------------------
+   16. RESPONSIVE — MOBILE
+------------------------------------------------------------ */
+@media (max-width: 640px) {
+  body.teachers-page .teachers-header {
+    min-height: 60px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  body.teachers-page .teachers-brand img {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+  }
+
+  body.teachers-page .teachers-brand strong {
+    font-size: 12.5px;
+  }
+
+  body.teachers-page .teachers-brand small {
+    font-size: 10.5px;
+  }
+
+  body.teachers-page .back-dashboard {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  body.teachers-page .teachers-main {
+    padding: 18px 14px 32px !important;
+  }
+
+  body.teachers-page .directory-heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  body.teachers-page .directory-heading > div {
+    flex: 0 0 auto;
+  }
+
+  body.teachers-page .add-teacher-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  body.teachers-page .directory-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  body.teachers-page .stat-card {
+    padding: 14px 16px;
+  }
+
+  body.teachers-page .stat-card span {
+    font-size: 11.5px;
+  }
+
+  body.teachers-page .stat-card strong {
+    font-size: 22px;
+  }
+
+  body.teachers-page .panel-heading {
+    padding: 14px 16px;
+  }
+
+  body.teachers-page .directory-filters {
+    padding: 12px 16px;
+  }
+
+  body.teachers-page .student-table thead th,
+  body.teachers-page .student-table tbody td {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  body.teachers-page .student-name-cell {
+    min-width: 160px;
+  }
+
+  body.teachers-page .student-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.teachers-page .dialog-header,
+  body.teachers-page #teacherDetailContent {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  body.teachers-page .directory-message {
+    min-height: 180px;
+    padding: 32px 18px;
+  }
+}
+
+/* ------------------------------------------------------------
+   17. RESPONSIVE — SMALL MOBILE
+------------------------------------------------------------ */
+@media (max-width: 420px) {
+  body.teachers-page .teachers-brand {
+    gap: 8px;
+  }
+
+  body.teachers-page .teachers-brand strong {
+    max-width: 170px;
+  }
+
+  body.teachers-page .directory-stats {
+    grid-template-columns: 1fr;
+  }
+
+  body.teachers-page .student-table thead th,
+  body.teachers-page .student-table tbody td {
+    padding: 10px 12px;
+  }
+}
+
+/* ------------------------------------------------------------
+   18. REDUCED MOTION
+------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  body.teachers-page .loading-spinner {
+    animation: none;
+    border-top-color: var(--teacher-orange);
+  }
+
+  body.teachers-page .teachers-layout .dash-sidebar,
+  body.teachers-page .teachers-layout .dash-nav-caret,
+  body.teachers-page .add-teacher-button,
+  body.teachers-page .refresh-button,
+  body.teachers-page .view-student-button,
+  body.teachers-page .back-dashboard,
+  body.teachers-page .close-dialog,
+  body.teachers-page .teachers-layout .dash-nav-link,
+  body.teachers-page .teachers-layout .dash-nav-group-toggle,
+  body.teachers-page .student-table tbody tr {
+    transition: none;
+  }
+}

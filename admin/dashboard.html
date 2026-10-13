@@ -143,17 +143,50 @@
             <span class="dash-nav-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.5 4-5.5 7-5.5s5.8 2 7 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
             </span>
-            Teachers
-            <span class="dash-nav-caret" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </button>
-          <ul class="dash-nav-sublist" id="navTeachers">
-            <li><a class="dash-nav-link" href="teachers.html">Teacher List</a></li>
-            <li><a class="dash-nav-link" href="add-teacher.html">Add Teacher</a></li>
-            <li><a class="dash-nav-link" href="manage-teachers.html">Manage Teachers</a></li>
-          </ul>
-        </div>
+
+
+            <button class="dash-nav-group-toggle" type="button">
+              Teachers
+              <span class="dash-nav-caret" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+            <ul class="dash-nav-sublist" id="navTeachers">
+              <li><a class="dash-nav-link" href="teachers.html">Teacher List</a></li>
+              <li><a class="dash-nav-link" href="add-teacher.html">Add Teacher</a></li>
+              <li><a class="dash-nav-link" href="manage-teachers.html">Manage Teachers</a></li>
+            </ul>
+          </button> 
+          
+
+          <!-- ACCOUNTS NAVIGATION -->
+          <div class="dash-nav-group">
+            <button
+              class="dash-nav-group-toggle"
+              type="button"
+              data-target="navAccounts"
+              aria-expanded="false"
+            >
+              Accounts
+              <span class="dash-nav-caret" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+
+            <ul class="dash-nav-sublist" id="navAccounts" hidden>
+              <li>
+                <a class="dash-nav-link" href="add-accountant.html">
+                  Add Accountant
+                </a>
+              </li>
+            </ul>
+          </div>
 
         <!-- Schedules group -->
         <div class="dash-nav-group">

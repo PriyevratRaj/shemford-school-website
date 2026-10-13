@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+
+  <title>Teacher List — Shemford Futuristic School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="teachers.css" />
+</head>
+
+<body class="teachers-page">
+
+  <header class="teachers-header">
+    <button
+      type="button"
+      class="sidebar-menu-button"
+      id="dashMenuToggle"
+      aria-label="Open admin navigation"
+      aria-controls="dashSidebar"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <a class="teachers-brand" href="dashboard.html">
+      <img src="../assets/images/logo.png" alt="School logo" />
+      <span>
+        <strong>Shemford Futuristic School</strong>
+        <small>Admin Portal / Teacher List</small>
+      </span>
+    </a>
+
+    <a class="back-dashboard" href="dashboard.html">
+      ← Dashboard
+    </a>
+  </header>
+
+  <div class="teachers-layout">
+
+    <aside
+      class="dash-sidebar"
+      id="dashSidebar"
+      aria-label="Admin navigation"
+    >
+      <nav class="dash-nav">
+
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="dashboard.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 11l9-8 9 8"
+                    stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 10v10h14V10"
+                    stroke="currentColor" stroke-width="1.6"
+                    stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+        </ul>
+
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle"
+            data-target="navStudents"
+            aria-expanded="false"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="9" cy="9" r="3"
+                  stroke="currentColor" stroke-width="1.6"/>
+                <path d="M3 20c.8-3 3-4.5 6-4.5s5.2 1.5 6 4.5"
+                  stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round"/>
+                <circle cx="17" cy="10" r="2.2"
+                  stroke="currentColor" stroke-width="1.6"/>
+                <path d="M14 20c.5-2 1.8-3.2 3-3.2s2.5 1.2 3 3.2"
+                  stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round"/>
+              </svg>
+            </span>
+
+            Students
+
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6"
+                  stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <ul class="dash-nav-sublist" id="navStudents" hidden>
+            <li>
+              <a class="dash-nav-link" href="students.html">
+                Student List
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="add-student.html">
+                Add Student
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="manage-students.html">
+                Manage Students
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle is-open"
+            data-target="navTeachers"
+            aria-expanded="true"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="3.5"
+                  stroke="currentColor" stroke-width="1.6"/>
+                <path d="M5 20c1.2-3.5 4-5.5 7-5.5s5.8 2 7 5.5"
+                  stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round"/>
+              </svg>
+            </span>
+
+            Teachers
+
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6"
+                  stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <ul class="dash-nav-sublist" id="navTeachers">
+            <li>
+              <a
+                class="dash-nav-link is-active"
+                href="teachers.html"
+                aria-current="page"
+              >
+                Teacher List
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="add-teacher.html">
+                Add Teacher
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="manage-teachers.html">
+                Manage Teachers
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dash-nav-group">
+          <button
+            type="button"
+            class="dash-nav-group-toggle"
+            data-target="navSchedules"
+            aria-expanded="false"
+          >
+            <span class="dash-nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="16" rx="2"
+                  stroke="currentColor" stroke-width="1.6"/>
+                <path d="M3 10h18M8 3v4M16 3v4"
+                  stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round"/>
+              </svg>
+            </span>
+
+            Schedules
+
+            <span class="dash-nav-caret" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6"
+                  stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+
+          <ul class="dash-nav-sublist" id="navSchedules" hidden>
+            <li>
+              <a class="dash-nav-link" href="#" aria-disabled="true">
+                Student Schedule
+                <span class="dash-nav-badge">Soon</span>
+              </a>
+            </li>
+            <li>
+              <a class="dash-nav-link" href="#" aria-disabled="true">
+                Teacher Schedule
+                <span class="dash-nav-badge">Soon</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="5" width="18" height="16" rx="2"
+                    stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M3 10h18M8 3v4M16 3v4M8 15l2 2 4-4"
+                    stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Teacher Attendance
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3"
+                    stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"
+                    stroke="currentColor" stroke-width="1.4"
+                    stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Settings
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="dashBackdrop" hidden></div>
+
+    <main class="teachers-main">
+
+      <section class="directory-heading">
+        <div>
+          <p class="eyebrow">TEACHER MANAGEMENT</p>
+          <h1>Teacher List</h1>
+          <p class="directory-description">
+            View teacher accounts, subjects and contact details. Search and filter the directory below.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="add-teacher-button"
+          id="addTeacherButton"
+          aria-disabled="true"
+          title="Add Teacher page not yet connected"
+        >
+          ＋ Add Teacher
+        </button>
+      </section>
+
+      <div id="directoryAlert" class="directory-alert"
+        role="alert" hidden></div>
+
+      <section class="directory-stats" aria-label="Directory statistics">
+        <article class="stat-card">
+          <span>Total teachers</span>
+          <strong id="totalTeachers">—</strong>
+        </article>
+        <article class="stat-card">
+          <span>Active teachers</span>
+          <strong id="activeTeachers">—</strong>
+        </article>
+      </section>
+
+      <section class="directory-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>All Teachers</h2>
+            <p id="resultCount">Loading teacher records…</p>
+          </div>
+          <button type="button" class="refresh-button" id="refreshTeachers">
+            ↻ Refresh
+          </button>
+        </div>
+
+        <div class="directory-filters">
+          <label class="search-field">
+            <span>Search</span>
+            <input
+              id="teacherSearch"
+              type="search"
+              placeholder="Name, School ID, email, subject or phone"
+              autocomplete="off"
+            />
+          </label>
+
+          <label>
+            <span>Status</span>
+            <select id="statusFilter">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="directoryLoading" class="directory-message">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <p>Loading teachers from the school database…</p>
+        </div>
+
+        <div id="directoryEmpty" class="directory-message" hidden>
+          <span class="empty-icon">🔎</span>
+          <h3>No teachers found</h3>
+          <p>Try changing your search or filters.</p>
+        </div>
+
+        <div id="directoryTableWrap" class="directory-table-wrap" hidden>
+          <table class="student-table">
+            <thead>
+              <tr>
+                <th>Teacher</th>
+                <th>School ID</th>
+                <th>Subject</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="teacherTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <p class="privacy-note">
+        Teacher information is displayed according to the access allowed
+        by your school database.
+      </p>
+    </main>
+  </div>
+
+  <dialog id="teacherDialog" class="student-dialog">
+    <div class="dialog-header">
+      <div>
+        <p class="eyebrow">TEACHER RECORD</p>
+        <h2 id="detailTeacherName">Teacher Details</h2>
+      </div>
+      <button
+        type="button"
+        id="closeTeacherDialog"
+        class="close-dialog"
+        aria-label="Close details"
+      >×</button>
+    </div>
+
+    <div id="teacherDetailContent">
+      <div class="student-detail-grid">
+        <div class="detail-item">
+          <span>School ID</span>
+          <strong id="detailSchoolId">—</strong>
+        </div>
+        <div class="detail-item">
+          <span>Email</span>
+          <strong id="detailEmail">—</strong>
+        </div>
+        <div class="detail-item">
+          <span>Phone</span>
+          <strong id="detailPhone">—</strong>
+        </div>
+        <div class="detail-item">
+          <span>Subject</span>
+          <strong id="detailSubject">—</strong>
+        </div>
+        <div class="detail-item">
+          <span>Joining date</span>
+          <strong id="detailJoining">—</strong>
+        </div>
+        <div class="detail-item">
+          <span>Account status</span>
+          <strong id="detailStatus">—</strong>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="teachers.js"></script>
+
+  <script>
+    (() => {
+      const sidebar = document.getElementById("dashSidebar");
+      const backdrop = document.getElementById("dashBackdrop");
+      const menuButton = document.getElementById("dashMenuToggle");
+
+      function closeSidebar() {
+        sidebar.classList.remove("is-visible");
+        backdrop.hidden = true;
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = sidebar.classList.toggle("is-visible");
+        backdrop.hidden = !isOpen;
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      backdrop.addEventListener("click", closeSidebar);
+
+      document.querySelectorAll(".dash-nav-group-toggle").forEach(button => {
+        button.addEventListener("click", () => {
+          const targetId = button.dataset.target;
+          const list = document.getElementById(targetId);
+          if (!list) return;
+
+          const willOpen = list.hidden;
+          list.hidden = !willOpen;
+          button.classList.toggle("is-open", willOpen);
+          button.setAttribute("aria-expanded", String(willOpen));
+        });
+      });
+
+      document.querySelectorAll('.dash-nav-link[href="#"]').forEach(link => {
+        link.addEventListener("click", event => {
+          if (link.getAttribute("aria-disabled") === "true") {
+            event.preventDefault();
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

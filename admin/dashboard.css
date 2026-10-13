@@ -736,3 +736,153 @@
   .dash-logout { transition: none; }
   .adm-action:hover { transform: none; }
 }
+
+/* ============================================================
+   STUDENT DIRECTORY — SIDEBAR COMPATIBILITY FIX
+   Add at the VERY END of dashboard.css
+   Existing dashboard pages remain unchanged.
+============================================================ */
+
+.students-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  align-items: start;
+  min-height: calc(100vh - 68px);
+  width: 100%;
+}
+
+.students-layout .dash-sidebar {
+  grid-area: auto;
+  position: sticky;
+  top: 68px;
+  left: auto;
+  bottom: auto;
+  width: auto;
+  min-width: 0;
+  height: calc(100vh - 68px);
+  transform: none;
+  visibility: visible;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: none;
+}
+
+.students-layout .students-main {
+  grid-area: auto;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 2rem;
+}
+
+.students-layout .dash-nav-link > span:not(.dash-nav-icon),
+.students-layout .dash-nav-badge,
+.students-layout .dash-nav-caret {
+  display: inline-flex;
+}
+
+.students-layout .dash-nav-link {
+  justify-content: flex-start;
+}
+
+.students-layout .dash-nav-group-toggle {
+  justify-content: flex-start;
+}
+
+.students-layout .dash-nav-group-toggle > span:not(.dash-nav-icon) {
+  display: inline-flex;
+}
+
+.students-layout .dash-nav-sublist {
+  padding-left: 2.4rem;
+}
+
+.students-layout .sidebar-menu-button {
+  display: none;
+}
+
+.students-layout .dash-backdrop {
+  display: none;
+}
+
+/* Tablet and mobile */
+@media (max-width: 1024px) {
+  .students-layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
+  .students-layout .dash-nav-link > span:not(.dash-nav-icon),
+  .students-layout .dash-nav-badge,
+  .students-layout .dash-nav-caret {
+    display: inline-flex;
+  }
+
+  .students-layout .dash-nav-group-toggle > span:not(.dash-nav-icon) {
+    display: inline-flex;
+  }
+
+  .students-layout .dash-nav-link {
+    justify-content: flex-start;
+    padding: .7rem .85rem;
+  }
+
+  .students-layout .dash-nav-group-toggle {
+    justify-content: flex-start;
+    padding: .7rem .85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .students-layout {
+    display: block;
+  }
+
+  .students-layout .sidebar-menu-button {
+    display: inline-flex;
+  }
+
+  .students-layout .dash-sidebar {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    bottom: 0;
+    width: min(280px, 85vw);
+    height: calc(100vh - 68px);
+    transform: translateX(-105%);
+    visibility: hidden;
+    transition: transform .25s ease, visibility .25s ease;
+    z-index: 60;
+    padding: 1.25rem 1rem;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(17, 24, 39, .15);
+  }
+
+  .students-layout .dash-sidebar.is-visible {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .students-layout .dash-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    inset: 68px 0 0;
+    background: rgba(17, 24, 39, .4);
+    z-index: 40;
+  }
+
+  .students-layout .students-main {
+    padding: 1.5rem 1.15rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .students-layout .students-main {
+    padding: 1.1rem .85rem 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .students-layout .dash-sidebar {
+    transition: none;
+  }
+}

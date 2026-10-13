@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Fees — Accountant Portal, Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Student Fees — Accountant Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="fees.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD — shown while we verify session + accountant role
+  ============================================================= -->
+  <div class="dash-guard" id="feesGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Checking your account...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="feesShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="feesMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="feesSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Accountant dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Accountant Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="feesNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="feesUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="feesUserName">Loading…</span>
+            <span class="dash-user-role">Accountant</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="feesLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="feesSidebar" aria-label="Accountant navigation">
+      <nav class="dash-nav">
+
+        <ul>
+          <li>
+            <a class="dash-nav-link" href="dashboard.html">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a class="dash-nav-link is-active" href="fees.html" aria-current="page">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M6 6h9a3 3 0 010 6H7a3 3 0 000 6h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Student Fees
+            </a>
+          </li>
+
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Invoices &amp; Receipts
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 6V5a2 2 0 012-2h4a2 2 0 012 2v1M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Teacher Salaries
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Financial Reports
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="dash-nav-link" href="#" aria-disabled="true">
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </span>
+              Settings
+              <span class="dash-nav-badge">Soon</span>
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="feesBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- PAGE HEAD -->
+      <section class="fees-page-head">
+        <a class="fees-back" href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Dashboard
+        </a>
+        <h1 class="fees-page-title">Student Fees</h1>
+        <p class="fees-page-sub">
+          Search a student by name, School ID, or roll number to view their
+          fee charges, payments, and outstanding dues.
+        </p>
+      </section>
+
+      <!-- ALERT -->
+      <div class="adm-alert" id="feesAlert" role="alert" hidden></div>
+
+      <!-- ============================================================
+           SEARCH SECTION
+      ============================================================= -->
+      <section class="adm-section fees-search-section" aria-labelledby="feesSearchTitle">
+        <header class="adm-section-head">
+          <h2 class="adm-section-title" id="feesSearchTitle">Find a Student</h2>
+          <p class="adm-section-sub">Type at least two characters to search.</p>
+        </header>
+
+        <div class="fees-search-wrap">
+          <label class="fees-search-label" for="feesSearch">Search students</label>
+          <div class="fees-search-field">
+            <span class="fees-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <input
+              type="search"
+              id="feesSearch"
+              class="fees-search-input"
+              placeholder="Name, School ID, or roll number"
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="feesSearchStatus"
+            />
+            <button
+              type="button"
+              class="fees-search-clear"
+              id="feesSearchClear"
+              aria-label="Clear search"
+              hidden
+            >
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Status: loading / no-results / error / prompt -->
+        <div
+          id="feesSearchStatus"
+          class="fees-status"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></div>
+
+        <!-- Search results list -->
+        <ul
+          id="feesSearchResults"
+          class="fees-results"
+          hidden
+          aria-label="Student search results"
+        ></ul>
+      </section>
+
+      <!-- ============================================================
+           STUDENT DETAILS PANEL
+      ============================================================= -->
+      <section
+        class="adm-section fees-student-panel"
+        id="feesStudentPanel"
+        aria-labelledby="feesStudentTitle"
+        hidden
+      >
+        <header class="fees-student-head">
+          <div class="fees-student-head-left">
+            <p class="fees-student-eyebrow">SELECTED STUDENT</p>
+            <h2 class="fees-student-name" id="feesStudentName">—</h2>
+            <p class="fees-student-meta" id="feesStudentMeta">—</p>
+          </div>
+          <button
+            type="button"
+            class="fees-student-close"
+            id="feesStudentClose"
+            aria-label="Close student details"
+          >
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </header>
+
+        <!-- Identity grid -->
+        <dl class="fees-identity">
+          <div class="fees-identity-item">
+            <dt>School ID</dt>
+            <dd id="feesStudentSchoolId">—</dd>
+          </div>
+          <div class="fees-identity-item">
+            <dt>Class / Section</dt>
+            <dd id="feesStudentClass">—</dd>
+          </div>
+          <div class="fees-identity-item">
+            <dt>Roll Number</dt>
+            <dd id="feesStudentRoll">—</dd>
+          </div>
+          <div class="fees-identity-item">
+            <dt>Full Name</dt>
+            <dd id="feesStudentFullName">—</dd>
+          </div>
+        </dl>
+
+        <!-- Total outstanding -->
+        <div class="fees-outstanding" role="status" aria-live="polite">
+          <div class="fees-outstanding-block">
+            <span class="fees-outstanding-label">Total Outstanding Dues</span>
+            <span class="fees-outstanding-value" id="feesOutstandingTotal">—</span>
+            <span class="fees-outstanding-note" id="feesOutstandingNote"></span>
+          </div>
+          <div class="fees-outstanding-block fees-outstanding-sub">
+            <span class="fees-outstanding-label">Tuition Due</span>
+            <span class="fees-outstanding-value-sm" id="feesOutstandingTuition">—</span>
+          </div>
+          <div class="fees-outstanding-block fees-outstanding-sub">
+            <span class="fees-outstanding-label">Transport Due</span>
+            <span class="fees-outstanding-value-sm" id="feesOutstandingTransport">—</span>
+          </div>
+        </div>
+        
+        <!-- RECEIVE PAYMENT -->
+        <section class="fees-payment-section" id="feesPaymentSection" hidden>
+          <div class="fees-section-heading">
+            <div>
+              <h3>Receive Payment</h3>
+              <p>Record money already received by the school.</p>
+            </div>
+            <button type="button" id="feesReceivePaymentBtn">
+              + Receive Payment
+            </button>
+          </div>
+
+          <form id="feesPaymentForm" hidden>
+            <div class="fees-payment-fields">
+              <label for="feesPayTuition">
+                Tuition amount (₹)
+                <input
+                  id="feesPayTuition"
+                  name="tuition_amount"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="0"
+                  required
+                />
+              </label>
+
+              <label for="feesPayTransport">
+                Transport amount (₹)
+                <input
+                  id="feesPayTransport"
+                  name="transport_amount"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value="0"
+                  required
+                />
+              </label>
+
+              <label for="feesPayMethod">
+                Payment method
+                <select id="feesPayMethod" name="payment_method" required>
+                  <option value="cash">Cash</option>
+                  <option value="cheque">Cheque</option>
+                  <option value="bank_transfer">Bank transfer</option>
+                  <option value="upi">UPI (already received)</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+
+              <label for="feesPayNotes">
+                Notes (optional)
+                <textarea
+                  id="feesPayNotes"
+                  name="notes"
+                  rows="3"
+                  maxlength="500"
+                  placeholder="Payment reference or other notes"
+                ></textarea>
+              </label>
+            </div>
+
+            <p id="feesPaymentAmountPreview">
+              Total to record: ₹0
+            </p>
+
+            <p id="feesPaymentFormError" role="alert" hidden></p>
+
+            <div class="fees-payment-actions">
+              <button type="submit" id="feesPaymentSubmitBtn">
+                Confirm Payment
+              </button>
+              <button type="button" id="feesPaymentCancelBtn">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- PAYMENT HISTORY -->
+        <section class="fees-payment-history" id="feesPaymentHistorySection" hidden>
+          <h3>Payment History</h3>
+          <p id="feesPaymentHistoryLoading" hidden>Loading payment history…</p>
+          <p id="feesPaymentHistoryEmpty" hidden>No payments recorded yet.</p>
+          <p id="feesPaymentHistoryError" role="alert" hidden></p>
+          <ul id="feesPaymentHistoryList" hidden></ul>
+        </section>
+
+        <!-- PRINTABLE RECEIPT -->
+        <section id="feesReceiptPanel" hidden>
+          <div id="feesReceiptContent"></div>
+          <button type="button" id="feesPrintReceiptBtn">
+            Print Receipt
+          </button>
+        </section>
+
+        <!-- Monthly breakdown -->
+        <header class="fees-months-head">
+          <h3 class="fees-months-title">Monthly Fee Breakdown</h3>
+          <p class="fees-months-sub">Newest billing month first.</p>
+        </header>
+
+        <div id="feesMonthsLoading" class="fees-status" role="status" aria-live="polite" hidden>
+          Loading fee charges…
+        </div>
+
+        <div id="feesMonthsEmpty" class="fees-months-empty" hidden>
+          <p class="fees-months-empty-title">No fee charges recorded</p>
+          <p class="fees-months-empty-text">
+            This student has no billing months in the system yet.
+          </p>
+        </div>
+
+        <div id="feesMonthsError" class="fees-status fees-status-error" role="alert" hidden></div>
+
+        <ul id="feesMonthsList" class="fees-months" hidden aria-label="Monthly fee breakdown"></ul>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="fees.js"></script>
+</body>
+</html>
