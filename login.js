@@ -222,6 +222,89 @@
 
       const userId = data.user.id;
 
+      
+      // LIBRARIAN PRE-CHECK
+      const librarianRes = await supabase
+        .from('librarian_profiles')
+        .select('id, is_active')
+        .eq('id', userId)
+        .maybeSingle();
+
+      if (librarianRes.error) {
+        console.error(
+          '[login] librarian_profiles lookup error:',
+          librarianRes.error
+        );
+
+        await supabase.auth.signOut();
+
+        setAlert(
+          'We could not verify your school profile right now. Please try again or contact the school office.',
+          'error'
+        );
+
+        setLoading(false);
+        return;
+      }
+
+      if (librarianRes.data) {
+        if (librarianRes.data.is_active !== true) {
+          await supabase.auth.signOut();
+
+          setAlert(
+            'Your librarian account is not active. Please contact the school office.',
+            'error'
+          );
+
+          setLoading(false);
+          return;
+        }
+
+        const libProfileRes = await supabase
+          .from('profiles')
+          .select('role, status')
+          .eq('id', userId)
+          .maybeSingle();
+
+        if (libProfileRes.error) {
+          console.error(
+            '[login] librarian profiles lookup error:',
+            libProfileRes.error
+          );
+
+          await supabase.auth.signOut();
+
+          setAlert(
+            'We could not verify your school profile right now. Please try again or contact the school office.',
+            'error'
+          );
+
+          setLoading(false);
+          return;
+        }
+
+        if (
+          !libProfileRes.data ||
+          libProfileRes.data.role !== 'librarian' ||
+          libProfileRes.data.status !== 'active'
+        ) {
+          await supabase.auth.signOut();
+
+          setAlert(
+            'Your account has an invalid role. Please contact the school office.',
+            'error'
+          );
+
+          setLoading(false);
+          return;
+        }
+
+        window.location.replace('librarian/dashboard.html');
+        return;
+      }
+      // END LIBRARIAN PRE-CHECK
+
+
       /* ------------------------------------------------------
          ORDER OF PROFILE CHECKS
          ------------------------------------------------------
@@ -329,7 +412,7 @@
          ------------------------------------------------------ */
 
       console.error(
-        '[login] No student, teacher, admin, or accountant profile found.'
+        '[login] No student, teacher, admin, accountant, or librarian profile found.'
       );
 
       await supabase.auth.signOut();

@@ -127,7 +127,6 @@
     revealTargets.forEach((el) => el.classList.add('is-revealed'));
   }
 
-
   /* ----------------------------------------------------------
      5. Image fallback
      If a placeholder image is missing, dim the container and
@@ -143,4 +142,5 @@
     });
   });
 
-})();
+})(); 
+// If you are seeing this look outside your house, FBI is wating for you. //

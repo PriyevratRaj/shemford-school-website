@@ -1144,3 +1144,300 @@
     stroke-dashoffset: var(--ring-end);
   }
 }
+
+/* =========================================================
+   FINAL MOBILE FIX — ACCOUNTANT DASHBOARD
+   Append at the END of accountant/dashboard.css
+========================================================= */
+
+@media (max-width: 768px) {
+  /* Keep the header compact */
+  .dash-header {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 12px;
+    gap: 8px;
+    overflow: visible;
+  }
+
+  .dash-header-left {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .dash-menu-btn {
+    display: inline-flex !important;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .dash-brand {
+    min-width: 0;
+    gap: 7px;
+    overflow: hidden;
+  }
+
+  .dash-brand-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dash-brand-text {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .dash-brand-name {
+    max-width: clamp(85px, 30vw, 155px);
+    font-size: 0.78rem;
+  }
+
+  .dash-brand-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .dash-header-right {
+    flex: 0 0 auto;
+    min-width: 0;
+    gap: 5px;
+  }
+
+  .dash-icon-btn {
+    display: none;
+  }
+
+  .dash-user {
+    max-width: 42px;
+    padding: 3px;
+    border: 0;
+  }
+
+  .dash-user-meta {
+    display: none;
+  }
+
+  .dash-user-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dash-logout {
+    padding: 8px;
+    gap: 0;
+  }
+
+  .dash-logout-label {
+    display: none;
+  }
+
+  /* Proper slide-in sidebar */
+  .dash-sidebar {
+    position: fixed !important;
+    inset: 0 auto 0 0;
+    width: min(285px, 84vw) !important;
+    max-width: 84vw;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1002;
+    transform: translateX(-105%);
+    transition: transform 0.28s ease;
+    padding: 76px 12px 24px;
+    background: var(--white, #fff);
+    box-shadow: 12px 0 35px rgba(0, 0, 0, 0.12);
+    overscroll-behavior: contain;
+  }
+
+  .dash-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .dash-sidebar .dash-nav-link {
+    justify-content: flex-start;
+    gap: 11px;
+    padding: 12px;
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+
+  .dash-sidebar .dash-nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dash-sidebar .dash-nav-badge {
+    display: inline;
+  }
+
+  /* Backdrop must sit above the content */
+  .dash-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    background: rgba(15, 23, 42, 0.55);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+
+  /* Keep main content inside the phone width */
+  .dash-shell {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  .dash-main {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 24px 14px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .adm-welcome {
+    margin-bottom: 24px;
+  }
+
+  .adm-welcome-title {
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
+    overflow-wrap: anywhere;
+  }
+
+  .adm-welcome-sub,
+  .adm-section-sub {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  /* Two compact summary cards per row */
+  .adm-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .adm-stat {
+    min-width: 0;
+    padding: 15px 12px;
+  }
+
+  .adm-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+
+  .adm-stat-value {
+    font-size: clamp(1.05rem, 4vw, 1.45rem);
+    overflow-wrap: anywhere;
+  }
+
+  .adm-stat-note {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  /* One chart per row */
+  .acc-finance-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .acc-monthly-card {
+    grid-column: auto;
+  }
+
+  .acc-chart-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 16px;
+  }
+
+  .acc-chart-bars {
+    height: 160px;
+    gap: 5px;
+  }
+
+  .acc-bar-item {
+    font-size: 0.68rem;
+  }
+
+  .acc-ring {
+    width: min(100%, 170px);
+  }
+
+  /* Quick Actions: two columns, with no overflow */
+  .adm-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .adm-action {
+    min-width: 0;
+    padding: 16px 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .adm-action-title {
+    font-size: 0.95rem;
+  }
+
+  .adm-action-text {
+    font-size: 0.8rem;
+  }
+
+  .adm-panel {
+    padding: 16px;
+  }
+
+  body.acc-menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+  .dash-header {
+    padding: 0 8px;
+  }
+
+  .dash-brand-name {
+    max-width: 100px;
+    font-size: 0.72rem;
+  }
+
+  .dash-main {
+    padding: 20px 12px !important;
+  }
+
+  .adm-summary,
+  .adm-action-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .adm-stat {
+    padding: 16px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .dash-sidebar {
+    transition: none !important;
+  }
+}
+
+

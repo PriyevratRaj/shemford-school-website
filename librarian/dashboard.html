@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Librarian Dashboard — Shemford Futuristic School" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F97316" />
+  <title>Librarian Dashboard — Shemford Futuristic School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="dash-body">
+
+  <!-- ============================================================
+       GUARD — shown while verifying session + librarian role
+  ============================================================= -->
+  <div class="dash-guard" id="libGuard">
+    <div class="dash-guard-box">
+      <div class="dash-spinner" aria-hidden="true"></div>
+      <p class="dash-guard-text">Checking your account...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SHELL
+  ============================================================= -->
+  <div class="dash-shell" id="libShell" hidden>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <div class="dash-header-left">
+
+        <button
+          class="dash-menu-btn"
+          id="libMenuBtn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="libSidebar"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="dash-brand" href="dashboard.html" aria-label="Librarian dashboard home">
+          <img
+            src="../assets/images/logo.png"
+            alt="Shemford Futuristic School logo"
+            width="40" height="40"
+            class="dash-brand-logo"
+          />
+          <span class="dash-brand-text">
+            <span class="dash-brand-name">Shemford Futuristic School</span>
+            <span class="dash-brand-sub">Librarian Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="dash-header-right">
+
+        <button
+          class="dash-icon-btn"
+          id="libNotificationsBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 8a6 6 0 1112 0v4l2 3H4l2-3V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 18a2 2 0 004 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="dash-user">
+          <span class="dash-user-avatar" id="libUserInitial" aria-hidden="true">–</span>
+          <span class="dash-user-meta">
+            <span class="dash-user-name" id="libUserName">Loading…</span>
+            <span class="dash-user-role">Librarian</span>
+          </span>
+        </div>
+
+        <button class="dash-logout" id="libLogout" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+            <path d="M15 17l5-5-5-5M20 12H9M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dash-logout-label">Logout</span>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="libSidebar" aria-label="Librarian navigation">
+      <nav class="dash-nav">
+        <ul>
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link is-active"
+              data-section="dashboard"
+              aria-current="page"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Dashboard
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link"
+              data-section="books"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5a2 2 0 012-2h5v18H6a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5a2 2 0 00-2-2h-5v18h5a2 2 0 002-2V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              Books
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link"
+              data-section="issue"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h12l4 4v12H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Issue Book
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link"
+              data-section="issued"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 7h14v12H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 4h6M9 11h6M9 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Issued Books
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link"
+              data-section="due"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Due Today
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link"
+              data-section="overdue"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l9 16H3L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4M12 17v.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              Overdue Books
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              class="dash-nav-link"
+              data-section="history"
+            >
+              <span class="dash-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 108-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4 4v5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Return History
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="dash-backdrop" id="libBackdrop" hidden></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- ======================================================
+           SECTION: DASHBOARD (summary cards)
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="dashboard" aria-labelledby="libDashTitle">
+        <header class="lib-page-head">
+          <h1 class="lib-page-title" id="libDashTitle">Librarian Dashboard</h1>
+          <p class="lib-page-sub">Overview of library activity.</p>
+        </header>
+
+        <div class="lib-alert" id="libAlert" role="alert" hidden></div>
+
+        <div class="lib-stat-grid" id="libStatGrid">
+          <article class="lib-stat">
+            <span class="lib-stat-label">Total Books</span>
+            <span class="lib-stat-value" id="libStatTotal">—</span>
+            <span class="lib-stat-note" id="libStatTotalNote"></span>
+          </article>
+
+          <article class="lib-stat">
+            <span class="lib-stat-label">Available</span>
+            <span class="lib-stat-value" id="libStatAvailable">—</span>
+            <span class="lib-stat-note" id="libStatAvailableNote"></span>
+          </article>
+
+          <article class="lib-stat">
+            <span class="lib-stat-label">Issued</span>
+            <span class="lib-stat-value" id="libStatIssued">—</span>
+            <span class="lib-stat-note" id="libStatIssuedNote"></span>
+          </article>
+
+          <article class="lib-stat">
+            <span class="lib-stat-label">Due Today</span>
+            <span class="lib-stat-value" id="libStatDue">—</span>
+            <span class="lib-stat-note" id="libStatDueNote"></span>
+          </article>
+
+          <article class="lib-stat">
+            <span class="lib-stat-label">Overdue</span>
+            <span class="lib-stat-value" id="libStatOverdue">—</span>
+            <span class="lib-stat-note" id="libStatOverdueNote"></span>
+          </article>
+        </div>
+        
+        <!-- LIBRARY ANALYTICS -->
+        <div class="lib-analytics-grid" id="libAnalytics">
+
+          <!-- Library composition -->
+          <section class="lib-panel lib-analytics-card">
+            <div class="lib-analytics-heading">
+              <div>
+                <p class="lib-analytics-eyebrow">COLLECTION OVERVIEW</p>
+                <h2>Library Composition</h2>
+                <p class="lib-analytics-subtitle">Availability of your books</p>
+              </div>
+              <span class="lib-analytics-icon" aria-hidden="true">◉</span>
+            </div>
+
+            <div class="lib-ring-layout">
+              <div class="lib-ring lib-ring-books" id="libBooksRing"
+                  role="img" aria-label="Library book availability">
+                <div class="lib-ring-center">
+                  <strong id="libRingTotal">0</strong>
+                  <span>Total books</span>
+                </div>
+              </div>
+
+              <div class="lib-ring-legend">
+                <div class="lib-legend-row">
+                  <span class="lib-legend-dot is-available"></span>
+                  <span>Available</span>
+                  <strong id="libRingAvailable">0</strong>
+                </div>
+                <div class="lib-legend-row">
+                  <span class="lib-legend-dot is-issued"></span>
+                  <span>Issued</span>
+                  <strong id="libRingIssued">0</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Loan status -->
+          <section class="lib-panel lib-analytics-card">
+            <div class="lib-analytics-heading">
+              <div>
+                <p class="lib-analytics-eyebrow">ACTIVE LOANS</p>
+                <h2>Loan Status</h2>
+                <p class="lib-analytics-subtitle">On-time vs overdue returns</p>
+              </div>
+              <span class="lib-analytics-icon" aria-hidden="true">◷</span>
+            </div>
+
+            <div class="lib-ring-layout">
+              <div class="lib-ring lib-ring-loans" id="libLoansRing"
+                  role="img" aria-label="Active loan status">
+                <div class="lib-ring-center">
+                  <strong id="libRingActive">0</strong>
+                  <span>Active loans</span>
+                </div>
+              </div>
+
+              <div class="lib-ring-legend">
+                <div class="lib-legend-row">
+                  <span class="lib-legend-dot is-ontime"></span>
+                  <span>On time</span>
+                  <strong id="libRingOnTime">0</strong>
+                </div>
+                <div class="lib-legend-row">
+                  <span class="lib-legend-dot is-overdue"></span>
+                  <span>Overdue</span>
+                  <strong id="libRingOverdue">0</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Monthly activity -->
+          <section class="lib-panel lib-analytics-card lib-activity-card">
+            <div class="lib-analytics-heading">
+              <div>
+                <p class="lib-analytics-eyebrow">LIBRARY TRENDS</p>
+                <h2>Six-Month Activity</h2>
+                <p class="lib-analytics-subtitle">
+                  Books issued and returned each month
+                </p>
+              </div>
+              <span class="lib-analytics-icon" aria-hidden="true">↗</span>
+            </div>
+
+            <div class="lib-chart-legend">
+              <span><i class="lib-legend-dot is-issued"></i> Issued</span>
+              <span><i class="lib-legend-dot is-returned"></i> Returned</span>
+            </div>
+
+            <div class="lib-bar-chart" id="libMonthlyChart"
+                role="img" aria-label="Monthly books issued and returned">
+              <p class="lib-chart-empty">Loading library activity…</p>
+            </div>
+          </section>
+
+        </div>
+        <!-- END LIBRARY ANALYTICS -->
+
+        <div class="lib-panel" id="libStatError" hidden>
+          <p class="lib-panel-text">
+            <strong>Could not load library data.</strong>
+            <span id="libStatErrorText">Please check your connection and try again.</span>
+          </p>
+          <button type="button" class="lib-btn lib-btn-primary" id="libStatRetry">
+            Retry
+          </button>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: BOOKS (list + add/edit)
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="books" aria-labelledby="libBooksTitle" hidden>
+        <header class="lib-page-head lib-page-head-row">
+          <div>
+            <h1 class="lib-page-title" id="libBooksTitle">Books</h1>
+            <p class="lib-page-sub">Search, add, and edit book records.</p>
+          </div>
+          <button type="button" class="lib-btn lib-btn-primary" id="libAddBookBtn">
+            + Add Book
+          </button>
+        </header>
+
+        <div class="lib-toolbar">
+          <label class="lib-search">
+            <span class="lib-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <input
+              type="search"
+              id="libBookSearch"
+              placeholder="Search by book number, title, author, category or ISBN"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <div class="lib-status-line" id="libBooksStatus"></div>
+
+        <div class="lib-table-wrap" id="libBooksTableWrap" hidden>
+          <table class="lib-table">
+            <thead>
+              <tr>
+                <th scope="col">Book No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Category</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="libBooksTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="lib-empty" id="libBooksEmpty" hidden>
+          <p class="lib-empty-title">No books yet</p>
+          <p class="lib-empty-text">Add a book to start building the library catalogue.</p>
+        </div>
+
+        <div class="lib-panel" id="libBooksError" hidden>
+          <p class="lib-panel-text">
+            <strong>Could not load books.</strong>
+            <span id="libBooksErrorText">Please check your connection and try again.</span>
+          </p>
+          <button type="button" class="lib-btn lib-btn-primary" id="libBooksRetry">
+            Retry
+          </button>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: ISSUE BOOK (form)
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="issue" aria-labelledby="libIssueTitle" hidden>
+        <header class="lib-page-head">
+          <h1 class="lib-page-title" id="libIssueTitle">Issue Book</h1>
+          <p class="lib-page-sub">Select a student and an available book to issue.</p>
+        </header>
+
+        <div class="lib-alert" id="libIssueAlert" role="alert" hidden></div>
+
+        <form class="lib-form" id="libIssueForm" novalidate>
+          <div class="lib-form-grid">
+            <div class="lib-field lib-field-full">
+              <label for="libIssueStudentSearch">Search Student</label>
+              <input
+                type="search"
+                id="libIssueStudentSearch"
+                placeholder="Search student by name, class or roll number"
+                autocomplete="off"
+              />
+
+              <div id="libIssueStudentResults" class="lib-search-results"></div>
+
+              <select id="libIssueStudent" hidden>
+                <option value="">Select student</option>
+              </select>
+              </div>
+             
+
+           
+              <div class="lib-field lib-field-full">
+                <label for="libIssueBookSearch">Search Available Book</label>
+
+                <input
+                  type="search"
+                  id="libIssueBookSearch"
+                  placeholder="Book number, title, author, category or ISBN"
+                  autocomplete="off"
+                />
+
+                <div
+                  id="libIssueBookResults"
+                  class="lib-search-results"
+                ></div>
+
+                <select id="libIssueBook" hidden>
+                  <option value="">Select book</option>
+                </select>
+              </div>
+
+
+            <div class="lib-field">
+              <label for="libIssueDate">Issue Date</label>
+              <input type="date" id="libIssueDate" required />
+            </div>
+
+            <div class="lib-field">
+              <label for="libIssueLoanDays">Loan Duration (days)</label>
+              <input
+                type="number"
+                id="libIssueLoanDays"
+                value="14"
+                min="1"
+                max="365"
+                step="1"
+                required
+              />
+            </div>
+
+            <div class="lib-field lib-field-full">
+              <label>Due Date (preview)</label>
+              <p class="lib-due-preview" id="libIssueDuePreview">—</p>
+            </div>
+          </div>
+
+          <div class="lib-form-actions">
+            <button type="submit" class="lib-btn lib-btn-primary" id="libIssueSubmit">
+              <span class="lib-btn-label">Issue Book</span>
+              <span class="lib-btn-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ======================================================
+           SECTION: ISSUED BOOKS (active issues)
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="issued" aria-labelledby="libIssuedTitle" hidden>
+        <header class="lib-page-head lib-page-head-row">
+          <div>
+            <h1 class="lib-page-title" id="libIssuedTitle">Issued Books</h1>
+            <p class="lib-page-sub">Currently open loans. Return, mark lost, or mark damaged.</p>
+          </div>
+          <button type="button" class="lib-btn lib-btn-outline" id="libIssuedRefresh">
+            ↻ Refresh
+          </button>
+        </header>
+
+        <div class="lib-alert" id="libIssuedAlert" role="alert" hidden></div>
+
+        <div class="lib-table-wrap" id="libIssuedTableWrap" hidden>
+          <table class="lib-table">
+            <thead>
+              <tr>
+                <th scope="col">Student</th>
+                <th scope="col">Class</th>
+                <th scope="col">Book No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Issued</th>
+                <th scope="col">Due</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="libIssuedTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="lib-empty" id="libIssuedEmpty" hidden>
+          <p class="lib-empty-title">No active loans</p>
+          <p class="lib-empty-text">There are no books currently issued.</p>
+        </div>
+
+        <div class="lib-panel" id="libIssuedError" hidden>
+          <p class="lib-panel-text">
+            <strong>Could not load issued books.</strong>
+            <span id="libIssuedErrorText">Please check your connection and try again.</span>
+          </p>
+          <button type="button" class="lib-btn lib-btn-primary" id="libIssuedRetry">
+            Retry
+          </button>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: DUE TODAY
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="due" aria-labelledby="libDueTitle" hidden>
+        <header class="lib-page-head">
+          <h1 class="lib-page-title" id="libDueTitle">Due Today</h1>
+          <p class="lib-page-sub">Active loans whose due date is today (Asia/Kolkata).</p>
+        </header>
+
+        <div class="lib-table-wrap" id="libDueTableWrap" hidden>
+          <table class="lib-table">
+            <thead>
+              <tr>
+                <th scope="col">Student</th>
+                <th scope="col">Class</th>
+                <th scope="col">Book No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Issued</th>
+                <th scope="col">Due</th>
+              </tr>
+            </thead>
+            <tbody id="libDueTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="lib-empty" id="libDueEmpty" hidden>
+          <p class="lib-empty-title">Nothing due today</p>
+          <p class="lib-empty-text">No active loans have a due date matching today.</p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: OVERDUE
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="overdue" aria-labelledby="libOverdueTitle" hidden>
+        <header class="lib-page-head">
+          <h1 class="lib-page-title" id="libOverdueTitle">Overdue Books</h1>
+          <p class="lib-page-sub">Active loans past their due date.</p>
+        </header>
+
+        <div class="lib-table-wrap" id="libOverdueTableWrap" hidden>
+          <table class="lib-table">
+            <thead>
+              <tr>
+                <th scope="col">Student</th>
+                <th scope="col">Class</th>
+                <th scope="col">Book No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Issued</th>
+                <th scope="col">Due</th>
+                <th scope="col">Overdue By</th>
+              </tr>
+            </thead>
+            <tbody id="libOverdueTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="lib-empty" id="libOverdueEmpty" hidden>
+          <p class="lib-empty-title">Nothing overdue</p>
+          <p class="lib-empty-text">All active loans are still within their due date.</p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION: RETURN HISTORY
+      ======================================================= -->
+      <section class="lib-section" data-section-panel="history" aria-labelledby="libHistoryTitle" hidden>
+        <header class="lib-page-head">
+          <h1 class="lib-page-title" id="libHistoryTitle">Return History</h1>
+          <p class="lib-page-sub">Closed loans — returned, lost, or damaged. Newest first.</p>
+        </header>
+
+        <div class="lib-table-wrap" id="libHistoryTableWrap" hidden>
+          <table class="lib-table">
+            <thead>
+              <tr>
+                <th scope="col">Student</th>
+                <th scope="col">Class</th>
+                <th scope="col">Book No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Issued</th>
+                <th scope="col">Due</th>
+                <th scope="col">Returned / Closed On</th>
+                <th scope="col">Outcome</th>
+              </tr>
+            </thead>
+            <tbody id="libHistoryTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="lib-empty" id="libHistoryEmpty" hidden>
+          <p class="lib-empty-title">No history yet</p>
+          <p class="lib-empty-text">Completed loans will appear here.</p>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       MODAL: ADD BOOK
+       NOTE: no method="dialog" — dashboard.js calls close() on success.
+  ============================================================= -->
+  <dialog class="lib-dialog" id="libAddBookDialog">
+    <form class="lib-dialog-inner" id="libAddBookForm" novalidate>
+      <header class="lib-dialog-head">
+        <h2 class="lib-dialog-title">Add Book</h2>
+        <button
+          type="button"
+          class="lib-dialog-close"
+          data-close-dialog
+          aria-label="Close"
+        >×</button>
+      </header>
+
+      <div class="lib-dialog-body">
+        <div class="lib-field">
+          <label for="libAddBookNumber">Book Number *</label>
+          <input type="text" id="libAddBookNumber" maxlength="40" required />
+        </div>
+        <div class="lib-field">
+          <label for="libAddTitle">Title *</label>
+          <input type="text" id="libAddTitle" maxlength="200" required />
+        </div>
+        <div class="lib-field">
+          <label for="libAddAuthor">Author</label>
+          <input type="text" id="libAddAuthor" maxlength="160" />
+        </div>
+        <div class="lib-field">
+          <label for="libAddCategory">Category</label>
+          <input type="text" id="libAddCategory" maxlength="80" />
+        </div>
+        <div class="lib-field">
+          <label for="libAddIsbn">ISBN</label>
+          <input type="text" id="libAddIsbn" maxlength="40" />
+        </div>
+
+        <div class="lib-alert" id="libAddBookAlert" role="alert" hidden></div>
+      </div>
+
+      <footer class="lib-dialog-actions">
+        <button type="button" class="lib-btn lib-btn-outline" data-close-dialog>
+          Cancel
+        </button>
+        <button type="submit" class="lib-btn lib-btn-primary" id="libAddBookSubmit">
+          <span class="lib-btn-label">Save Book</span>
+          <span class="lib-btn-spinner" aria-hidden="true"></span>
+        </button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- ============================================================
+       MODAL: EDIT BOOK
+       NOTE: no method="dialog" — dashboard.js calls close() on success.
+  ============================================================= -->
+  <dialog class="lib-dialog" id="libEditBookDialog">
+    <form class="lib-dialog-inner" id="libEditBookForm" novalidate>
+      <header class="lib-dialog-head">
+        <h2 class="lib-dialog-title">Edit Book Metadata</h2>
+        <button
+          type="button"
+          class="lib-dialog-close"
+          data-close-dialog
+          aria-label="Close"
+        >×</button>
+      </header>
+
+      <div class="lib-dialog-body">
+        <div class="lib-field">
+          <label>Book Number</label>
+          <p class="lib-readonly" id="libEditBookNumber">—</p>
+        </div>
+        <div class="lib-field">
+          <label for="libEditTitle">Title *</label>
+          <input type="text" id="libEditTitle" maxlength="200" required />
+        </div>
+        <div class="lib-field">
+          <label for="libEditAuthor">Author</label>
+          <input type="text" id="libEditAuthor" maxlength="160" />
+        </div>
+        <div class="lib-field">
+          <label for="libEditCategory">Category</label>
+          <input type="text" id="libEditCategory" maxlength="80" />
+        </div>
+        <div class="lib-field">
+          <label for="libEditIsbn">ISBN</label>
+          <input type="text" id="libEditIsbn" maxlength="40" />
+        </div>
+
+        <input type="hidden" id="libEditBookId" />
+
+        <div class="lib-alert" id="libEditBookAlert" role="alert" hidden></div>
+      </div>
+
+      <footer class="lib-dialog-actions">
+        <button type="button" class="lib-btn lib-btn-outline" data-close-dialog>
+          Cancel
+        </button>
+        <button type="submit" class="lib-btn lib-btn-primary" id="libEditBookSubmit">
+          <span class="lib-btn-label">Save Changes</span>
+          <span class="lib-btn-spinner" aria-hidden="true"></span>
+        </button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- ============================================================
+       MODAL: CONFIRM ACTION
+  ============================================================= -->
+  <dialog class="lib-dialog" id="libConfirmDialog">
+    <div class="lib-dialog-inner">
+      <header class="lib-dialog-head">
+        <h2 class="lib-dialog-title" id="libConfirmTitle">Confirm</h2>
+        <button
+          type="button"
+          class="lib-dialog-close"
+          data-close-dialog
+          aria-label="Close"
+        >×</button>
+      </header>
+
+      <div class="lib-dialog-body">
+        <p class="lib-confirm-text" id="libConfirmText">Are you sure?</p>
+      </div>
+
+      <footer class="lib-dialog-actions">
+        <button type="button" class="lib-btn lib-btn-outline" data-close-dialog>
+          Cancel
+        </button>
+        <button type="button" class="lib-btn lib-btn-danger" id="libConfirmSubmit">
+          <span class="lib-btn-label" id="libConfirmSubmitLabel">Confirm</span>
+          <span class="lib-btn-spinner" aria-hidden="true"></span>
+        </button>
+      </footer>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
+

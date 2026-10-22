@@ -1280,3 +1280,166 @@
     display: none !important;
   }
 }
+
+/* ACCOUNTANT DASHBOARD — MOBILE SIDEBAR + RESPONSIVE FIX */
+
+.dash-menu-btn {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dash-backdrop[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Three-line menu button */
+  .dash-menu-btn {
+    display: inline-flex !important;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1200;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 12px;
+    background: var(--white, #ffffff);
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+    touch-action: manipulation;
+  }
+
+  /* Sidebar becomes a slide-in drawer */
+  #accSidebar.dash-sidebar {
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(280px, 85vw) !important;
+    max-width: 85vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1100;
+    transform: translateX(-105%);
+    transition: transform 0.28s ease;
+    visibility: visible;
+  }
+
+  #accSidebar.dash-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  /* Dark overlay behind the drawer */
+  #accBackdrop.dash-backdrop:not([hidden]) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1090;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  body.acc-menu-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  /* Prevent content from exceeding screen width */
+  #accShell,
+  .dash-main,
+  .adm-section,
+  .adm-summary,
+  .acc-finance-grid,
+  .acc-chart-card {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dash-main {
+    width: 100%;
+    margin-left: 0 !important;
+    padding: 72px 14px 24px !important;
+    overflow-x: clip;
+  }
+
+  .adm-welcome {
+    padding: 18px 16px;
+    overflow-wrap: anywhere;
+  }
+
+  /* Summary cards */
+  .adm-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .adm-stat {
+    min-width: 0;
+    padding: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .adm-stat h3,
+  .adm-stat p {
+    overflow-wrap: anywhere;
+  }
+
+  /* Charts */
+  .acc-finance-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .acc-monthly-card {
+    grid-column: auto;
+  }
+
+  .acc-chart-card {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .acc-chart-bars {
+    gap: 6px;
+  }
+
+  .acc-bar-item {
+    font-size: 11px;
+  }
+
+  .acc-ring {
+    max-width: 165px;
+  }
+
+  /* Quick action cards */
+  .adm-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .adm-action {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 380px) {
+  .adm-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dash-main {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #accSidebar.dash-sidebar {
+    transition: none;
+  }
+}
