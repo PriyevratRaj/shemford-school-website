@@ -282,7 +282,10 @@
           setLoading(false);
           return;
         }
-
+        console.log('[DEBUG] Librarian profile:', libProfileRes.data);
+        console.log('[DEBUG] Librarian lookup error:', libProfileRes.error);
+        console.log('[DEBUG] Logged-in user ID:', userId);
+        
         if (
           !libProfileRes.data ||
           libProfileRes.data.role !== 'librarian' ||
@@ -459,3 +462,4 @@
   });
 
 })();
+ 

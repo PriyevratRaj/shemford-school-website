@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Shemford Futuristic School Principal Dashboard">
+  <title>Principal Dashboard | Shemford Futuristic School</title>
+
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+  <div class="principal-app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">S</div>
+        <div class="brand-info">
+          <h2>Shemford</h2>
+          <p>Futuristic School</p>
+        </div>
+      </div>
+
+      <div class="sidebar-label">PRINCIPAL PANEL</div>
+
+      <nav class="sidebar-nav" aria-label="Principal navigation">
+        <button class="nav-item active" data-section="overview">
+          <span class="nav-icon">◫</span>
+          <span>Overview</span>
+        </button>
+
+        <button class="nav-item" data-section="students">
+          <span class="nav-icon">♙</span>
+          <span>Students</span>
+        </button>
+
+        <button class="nav-item" data-section="teachers">
+          <span class="nav-icon">♧</span>
+          <span>Teachers</span>
+        </button>
+
+        <button class="nav-item" data-section="admins">
+          <span class="nav-icon">▣</span>
+          <span>Admins</span>
+        </button>
+
+        <button class="nav-item" data-section="accountants">
+          <span class="nav-icon">₹</span>
+          <span>Accountants</span>
+        </button>
+
+        <button class="nav-item" data-section="librarians">
+          <span class="nav-icon">▤</span>
+          <span>Librarians</span>
+        </button>
+
+        <button class="nav-item" data-section="fees">
+          <span class="nav-icon">₹</span>
+          <span>Fees & Dues</span>
+        </button>
+
+        <button class="nav-item" data-section="salaries">
+          <span class="nav-icon">▤</span>
+          <span>Teacher Salaries</span>
+        </button>
+
+        <button class="nav-item" data-section="announcements">
+          <span class="nav-icon">◉</span>
+          <span>Announcements</span>
+        </button>
+
+        <button class="nav-item" data-section="events">
+          <span class="nav-icon">▦</span>
+          <span>School Events</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="profile-avatar">P</div>
+        <div class="profile-info">
+          <strong id="principalName">Principal</strong>
+          <span>School Administration</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main area -->
+    <main class="main-area">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle"
+                  aria-label="Toggle sidebar">☰</button>
+          <div>
+            <p class="breadcrumb">Shemford / Administration</p>
+            <h1 id="pageTitle">Overview</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="role-chip">Principal</span>
+          <button class="logout-btn" id="logoutBtn">Log out ↗</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+
+        <!-- Overview -->
+        <section class="dashboard-section active" id="section-overview">
+          <div class="welcome-banner">
+            <div>
+              <p class="eyebrow">SCHOOL ADMINISTRATION</p>
+              <h2>Welcome back, Principal 👋</h2>
+              <p>Here is your school's administrative overview.</p>
+            </div>
+            <div class="welcome-mark">S</div>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <h2>School Overview</h2>
+              <p>Key information at a glance.</p>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-icon students-icon">♙</div>
+              <p>Total Students</p>
+              <h3 id="totalStudents">—</h3>
+              <span>Registered students</span>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon teachers-icon">♧</div>
+              <p>Total Teachers</p>
+              <h3 id="totalTeachers">—</h3>
+              <span>Registered teachers</span>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon fees-icon">₹</div>
+              <p>Fees Collected</p>
+              <h3 id="feesCollected">—</h3>
+              <span>Recorded payments</span>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon dues-icon">◷</div>
+              <p>Outstanding Dues</p>
+              <h3 id="feesDue">—</h3>
+              <span>Pending fee balance</span>
+            </article>
+          </div>
+
+          <div class="overview-grid">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Fee Collection</h3>
+                  <p>Collection overview</p>
+                </div>
+                <span class="panel-tag">Overview</span>
+              </div>
+              <div class="chart-placeholder" id="feeChart">
+                <div class="chart-placeholder-icon">◔</div>
+                <p>Fee collection chart will appear here</p>
+                <span>Waiting for real database data</span>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>School Information</h3>
+                  <p>Administrative summary</p>
+                </div>
+              </div>
+              <div class="info-list">
+                <div class="info-row">
+                  <span>School</span>
+                  <strong>Shemford Futuristic School</strong>
+                </div>
+                <div class="info-row">
+                  <span>Dashboard</span>
+                  <strong>Principal</strong>
+                </div>
+                <div class="info-row">
+                  <span>Upcoming Events</span>
+                  <strong id="upcomingEvents">—</strong>
+                </div>
+                <div class="info-row">
+                  <span>Teacher Salaries</span>
+                  <strong id="salarySummary">—</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <article class="panel recent-panel">
+            <div class="panel-heading">
+              <div>
+                <h3>Recent Announcements</h3>
+                <p>School communication</p>
+              </div>
+              <button class="text-btn" data-open-section="announcements">
+                View all →
+              </button>
+            </div>
+            <div class="empty-state">
+              <span>▤</span>
+              <p>Announcements will appear here when connected.</p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Students -->
+        <section class="dashboard-section" id="section-students">
+          <div class="section-heading">
+            <div>
+              <h2>Student Directory</h2>
+              <p>View student records and details.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <div class="toolbar">
+              <input type="search" id="studentSearch"
+                     placeholder="Search by name, class or roll number...">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>School ID</th>
+                    <th>Class / Section</th>
+                    <th>Roll No.</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="studentsTable">
+                  <tr><td colspan="5" class="table-empty">
+                    Student records will load here.
+                  </td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- Teachers -->
+        <section class="dashboard-section" id="section-teachers">
+          <div class="section-heading">
+            <div>
+              <h2>Teacher Directory</h2>
+              <p>View teacher profiles and employment details.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <div class="toolbar">
+              <input type="search" id="teacherSearch"
+                     placeholder="Search teachers by name or subject...">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Teacher</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="teachersTable">
+                  <tr><td colspan="5" class="table-empty">
+                    Teacher records will load here.
+                  </td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- Staff directories -->
+        <section class="dashboard-section" id="section-admins">
+          <div class="section-heading">
+            <div>
+              <h2>Admin Directory</h2>
+              <p>View school administrator records.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <div class="toolbar">
+              <input type="search" id="adminSearch"
+                     placeholder="Search administrators...">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th></tr></thead>
+                <tbody id="adminsTable">
+                  <tr><td colspan="4" class="table-empty">Admin records will load here.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-section" id="section-accountants">
+          <div class="section-heading">
+            <div>
+              <h2>Accountant Directory</h2>
+              <p>View accounts team records.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <div class="toolbar">
+              <input type="search" id="accountantSearch"
+                     placeholder="Search accountants...">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th></tr></thead>
+                <tbody id="accountantsTable">
+                  <tr><td colspan="4" class="table-empty">Accountant records will load here.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-section" id="section-librarians">
+          <div class="section-heading">
+            <div>
+              <h2>Librarian Directory</h2>
+              <p>View library team records.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <div class="toolbar">
+              <input type="search" id="librarianSearch"
+                     placeholder="Search librarians...">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th></tr></thead>
+                <tbody id="librariansTable">
+                  <tr><td colspan="4" class="table-empty">Librarian records will load here.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- Fees -->
+        <section class="dashboard-section" id="section-fees">
+          <div class="section-heading">
+            <div>
+              <h2>Fees & Dues</h2>
+              <p>Review recorded fee payments and outstanding balances.</p>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <p>Total Collected</p>
+              <h3 id="feesPageCollected">—</h3>
+              <span>Recorded payments</span>
+            </article>
+            <article class="stat-card">
+              <p>Outstanding Dues</p>
+              <h3 id="feesPageDue">—</h3>
+              <span>Pending balance</span>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panel-heading">
+              <div><h3>Fee Summary</h3><p>Read-only financial overview</p></div>
+            </div>
+            <div class="empty-state">
+              <span>₹</span>
+              <p>Fee details will load from the existing accounts records.</p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Salaries -->
+        <section class="dashboard-section" id="section-salaries">
+          <div class="section-heading">
+            <div>
+              <h2>Teacher Salaries</h2>
+              <p>Review salary payment summaries.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <div class="panel-heading">
+              <div><h3>Salary Overview</h3><p>Read-only summary</p></div>
+            </div>
+            <div class="empty-state">
+              <span>₹</span>
+              <p>Salary records will appear here after the data source is verified.</p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Announcements -->
+        <section class="dashboard-section" id="section-announcements">
+          <div class="section-heading">
+            <div>
+              <h2>Announcements</h2>
+              <p>Create and manage school announcements.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <form id="announcementForm">
+              <div class="form-field">
+                <label for="announcementTitle">Announcement title</label>
+                <input id="announcementTitle" name="title"
+                       type="text" placeholder="Enter announcement title">
+              </div>
+              <div class="form-field">
+                <label for="announcementBody">Message</label>
+                <textarea id="announcementBody" name="body" rows="4"
+                          placeholder="Write your announcement..."></textarea>
+              </div>
+              <p class="form-note">
+                Publishing will be enabled after the announcement database is verified.
+              </p>
+              <button type="button" class="primary-btn" disabled>
+                Publish announcement
+              </button>
+            </form>
+            <div class="divider-line"></div>
+            <div id="announcementsList" class="empty-state">
+              <span>▤</span>
+              <p>Saved announcements will appear here.</p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Events -->
+        <section class="dashboard-section" id="section-events">
+          <div class="section-heading">
+            <div>
+              <h2>School Events</h2>
+              <p>Review and plan upcoming school events.</p>
+            </div>
+          </div>
+          <article class="panel">
+            <form id="eventForm">
+              <div class="form-field">
+                <label for="eventTitle">Event name</label>
+                <input id="eventTitle" name="title" type="text"
+                       placeholder="Enter event name">
+              </div>
+              <div class="form-field">
+                <label for="eventDate">Event date</label>
+                <input id="eventDate" name="date" type="date">
+              </div>
+              <div class="form-field">
+                <label for="eventDescription">Description</label>
+                <textarea id="eventDescription" name="description" rows="3"
+                          placeholder="Add event details..."></textarea>
+              </div>
+              <p class="form-note">
+                Saving events will be enabled after the event data source is verified.
+              </p>
+              <button type="button" class="primary-btn" disabled>
+                Save event
+              </button>
+            </form>
+            <div class="divider-line"></div>
+            <div id="eventsList" class="empty-state">
+              <span>▦</span>
+              <p>Saved events will appear here.</p>
+            </div>
+          </article>
+        </section>
+
+        <footer class="page-footer">
+          <span>© Shemford Futuristic School</span>
+          <span>Principal Administration Panel</span>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
